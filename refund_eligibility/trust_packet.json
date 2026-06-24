@@ -1,0 +1,296 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T04:54:13.485681Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262649628429",
+      "url_or_document_id": "C0BA1V2K269__1781262649.628429"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T04:54:13.485681Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262682818439",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262682818439",
+      "url_or_document_id": "C0BA1V2K269__1781262682.818439"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T04:54:13.485681Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262686690199",
+      "url_or_document_id": "C0BA1V2K269__1781262686.690199"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T04:54:13.485681Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262732047749",
+      "url_or_document_id": "C0BA1V2K269__1781262732.047749"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T04:54:13.485681Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262743711859",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262743711859",
+      "url_or_document_id": "C0BA1V2K269__1781262743.711859"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T04:54:13.485681Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262796239039",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262796239039",
+      "url_or_document_id": "C0BA1V2K269__1781262796.239039"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T04:54:13.485681Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262823049209",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262823049209",
+      "url_or_document_id": "C0BA1V2K269__1781262823.049209"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Ineligible when Customer purchased a software license (Order #ORD-78234), downloaded and activated it, and now states they do not need it. Activation is confirmed and reason is buyer's remorse. Agent must deny the refund citing digital goods policy disclosed at checkout and offer technical support as an alternative. Evidence: src_slack_c0ba1v2k269_1781262743711859."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Escalate when Customer purchased and activated a digital license but reports the software is not functioning correctly. Activation is confirmed but reason is product failure, not buyer's remorse. Agent must NOT apply the denial path and must route to technical support instead."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Escalate when Customer requests a refund on a digital license order but activation_status_confirmed is false or unknown. Agent must not issue a denial without confirmation of activation; must gather or verify activation status before proceeding, escalating for manual verification if system cannot confirm."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Eligible when Customer requests a refund on a physical product (e.g., headphones sent in wrong color, Order #ORD-31502). product_type_is_digital is false, so this skill does not apply. Agent must not deny under the digital goods policy and must handle via the appropriate physical goods refund path. Evidence: src_slack_c0ba1v2k269_1781262649628429."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Escalate when Customer has an activated digital license denied for refund but now threatens an immediate chargeback. The base denial stands under digital goods policy, but the chargeback threat triggers escalation to the senior payments team per escalation policy. Evidence pattern: src_slack_c0ba1v2k269_1781262823049209."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Ineligible when Customer purchased a dress during a Black Friday final sale (Order #ORD-67890) and requests a refund because it does not fit. This is ineligible under the final sale promotional terms disclosed at checkout, not under the digital goods policy. Confirms policy-at-checkout denial pattern is consistent but scoped correctly to non-digital context. Evidence: src_slack_c0ba1v2k269_1781262732047749."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:c6125bab66c2eac257b9a35176941152f6f9de8b255472c8f105af18a268993a",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "*[2/20 \u00b7 Eligible]* I ordered the blue wireless headphones (Order #ORD-31502) but received the red ones instead. I want a refund or an exchange. *Sent using* Claude So sorry for the mix-up! Shipping the wrong color is our error, so you're absolutely eligible for a full refund or a free exchange your choice. We'll cover return shipping too. Would you prefer the $79.00 refund or an exchange for the correct blue headphones? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "synced_at": "2026-06-24T04:54:13.485681Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:00c6bbe053eed9de75eb0f476578eff1c620457da83e8593e1f2e48f851f8547",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "*[5/20 \u00b7 Eligible]* I paid for 2-day shipping on Order #ORD-55120 but the package arrived 8 days late. The item was a gift for an event that already passed it's now useless. I want a refund. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262682818439",
+      "synced_at": "2026-06-24T04:54:13.485681Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:5f01341f86eb27cef8f4a8e0c60fd45a529e7ee620ac88e33cf692b1f4d769c4",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "*[5/20 \u00b7 Eligible]* I paid for 2-day shipping on Order #ORD-55120 but the package arrived 8 days late. The item was a gift for an event that already passed it's now useless. I want a refund. *Sent using* Claude I sincerely apologize 8 days on a 2-day order is unacceptable. Since the late delivery made the item useless for its intended purpose, you're eligible for a full refund including the shipping fee. I'll process $124.99 back to your original payment method now. You're also welcome to keep the item. Is there anything else I can do to make this right? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+      "synced_at": "2026-06-24T04:54:13.485681Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:270ebbb585895ca3c9b1f6b13cf82ec76a9d9514822baa6f61d77bceb941f7ac",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "*[9/20 \u00b7 Ineligible]* I bought a dress during your Black Friday sale (Order #ORD-67890). It doesn't fit well. Can I return it for a refund? *Sent using* Claude Sorry the fit isn't right! I can see Order #ORD-67890 was placed during our Black Friday promotion, which was marked as a final sale event all items from that sale are non-refundable and non-returnable per the promotional terms disclosed at checkout. Unfortunately I'm unable to make exceptions to the final sale policy. Happy to help you with sizing guidance for a future purchase if that's useful. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "synced_at": "2026-06-24T04:54:13.485681Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:d11a0aa269a0c2706c486676dccd0105317ea9c97d3c01c7129fff21c527d260",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "*[10/20 \u00b7 Ineligible]* I bought a software license yesterday (Order #ORD-78234), downloaded and activated it, but I've decided I don't really need it. Can I get a refund? *Sent using* Claude Unfortunately, once a digital license has been downloaded and activated the product has been consumed, and our digital goods policy disclosed at checkout doesn't allow refunds at that point. If the software isn't working correctly, that's a different situation I can absolutely help with. Is there a technical issue I can assist you with instead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262743711859",
+      "synced_at": "2026-06-24T04:54:13.485681Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:b43dcb461ca074e9bdef067af5d06c6766d32884545287e6e01045a02c6d330d",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "*[14/20 \u00b7 Edge Case]* I returned my order 3 weeks ago and got a return confirmation email, but I still haven't seen the refund on my credit card. Order #ORD-39201. What's going on? *Sent using* Claude I'm so sorry for the delay! The return for Order #ORD-39201 was confirmed on our end 21 days ago and the refund was issued. At this point it should have appeared it may show under a slightly different merchant name or as a pending credit. I'm escalating to our payments team to trace the transaction; they typically resolve these within 48 hours and I'll follow up directly. Can you confirm the last 4 digits of the card used? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262796239039",
+      "synced_at": "2026-06-24T04:54:13.485681Z"
+    }
+  ],
+  "generated_at": "2026-06-24T05:02:16.839249Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy under the refund_eligibility skill namespace. Set required_inputs to [order_id, product_type_is_digital, activation_status_confirmed]. Gate execution on product_type_is_digital=true AND activation_status_confirmed=true before invoking the ineligible denial branch. Wire the technical-malfunction branch to the technical support routing skill. Ensure the digital goods policy disclosure text is injected from the policy content store at runtime so the denial citation remains accurate if policy language changes. Log all denial decisions with order_id and activation confirmation source for audit.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/only_apply_this_denial_path_when_activation_is_confirmed_if_customer_reports_the_product_is_not_functioning_route_to_technical_support_instead_of_this_skill.md",
+      "runtime": "only_apply_this_denial_path_when_activation_is_confirmed_if_customer_reports_the_product_is_not_functioning_route_to_technical_support_instead_of_this_skill",
+      "test_instructions": "1. Submit a request with product_type_is_digital=true, activation_status_confirmed=true, reason=buyer_remorse and assert the response contains a refund denial citing digital goods policy and an offer of technical support (test_001). 2. Submit with activation_status_confirmed=true but reason=product_not_functioning and assert the response routes to technical support without a denial (test_002). 3. Submit with activation_status_confirmed=false and assert the response does not issue a denial and instead seeks confirmation or escalates (test_003). 4. Submit with product_type_is_digital=false and assert this skill exits without applying the digital goods denial (test_004). 5. Submit a buyer's remorse denial scenario followed by a chargeback threat message and assert the response includes escalation to senior payments team (test_005). 6. Verify tone checks: denial responses must not be accusatory and must include an empathetic acknowledgment before citing policy."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "refund_eligibility",
+  "source_bundle_hash": "sha256:35ff95d407f302b68342489825afe711e99d78bec35e397b899cf1c2d38edb4e",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_001",
+      "name": "Buyer's remorse on confirmed activated digital license",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_002",
+      "name": "Digital license refund request with reported technical malfunction",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_003",
+      "name": "Digital license refund where activation status is unconfirmed",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_004",
+      "name": "Non-digital physical product refund request misdirected to this skill",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_005",
+      "name": "Chargeback threat on an activated digital license buyer's remorse case",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_006",
+      "name": "Final-sale physical item refund denied for buyer's remorse",
+      "status": "pass"
+    }
+  ]
+}
