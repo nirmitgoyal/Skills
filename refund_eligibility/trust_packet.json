@@ -1,0 +1,287 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T00:58:55.660191Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262670462979",
+      "url_or_document_id": "C0BA1V2K269__1781262670.462979"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T00:58:55.660191Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262772545439",
+      "url_or_document_id": "C0BA1V2K269__1781262772.545439"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T00:58:55.660191Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262784193319",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262784193319",
+      "url_or_document_id": "C0BA1V2K269__1781262784.193319"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T00:58:55.660191Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262857848579",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262857848579",
+      "url_or_document_id": "C0BA1V2K269__1781262857.848579"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Eligible when Customer reports a $230 unauthorized charge on Order #ORD-77654. Transaction IP does not match customer's usual location. Agent must immediately lock the account, flag IP mismatch to the security team, confirm fraud claim within 15 minutes, state the $230 refund will process in 3\u20135 business days, and instruct the customer to notify their card issuer. Agent must also request account email confirmation for the security alert. No human approval required for lockdown; human confirmation required only for fraud claim initiation. Backed by src_slack_c0ba1v2k269_1781262857848579."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Escalate when Customer reports an unauthorized charge but the system cannot retrieve or compare the transaction IP address against the customer's usual location. Because the IP mismatch signal\u2014the primary deterministic trigger\u2014cannot be confirmed, the agent must not auto-lock or auto-initiate the fraud claim. Instead, the case must be escalated to the security team for manual review before any further action is taken."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Ineligible when Customer reports a $99 annual renewal charge they forgot about after 11 months of non-usage. There is no IP mismatch and no claim of unauthorized access. This case does not qualify for the Fraudulent Account Security Lockdown Protocol. It must be routed to the standard refund eligibility flow (partial refund or full refund with manager approval), not the fraud lockdown path. Backed by src_slack_c0ba1v2k269_1781262784193319."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Escalate when Customer reports an unauthorized charge with a confirmed IP mismatch. Account lockdown is executed immediately. However, when the agent requests the customer's account email for the security alert, the customer is unable to provide it or provides one that does not match any record. The agent must pause fraud claim submission and escalate to a human security agent before proceeding, as email confirmation is a required field for security alert delivery."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Ineligible when Customer reports being charged $49 one day after their 7-day trial ended because they forgot to cancel. There is no report of unauthorized access, no IP mismatch, and no fraud indicators. This case does not meet the trigger conditions for the Fraudulent Account Security Lockdown Protocol and must be handled under the standard trial refund courtesy policy. Backed by src_slack_c0ba1v2k269_1781262670462979."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Ineligible when A gift recipient reports an allergic reaction to a skincare product and requests store credit. The original purchaser is not involved. There is no unauthorized transaction, no IP mismatch, and no fraud indicators. This case does not qualify for the Fraudulent Account Security Lockdown Protocol. It must be routed to the gift return and health safety exception flow. Backed by src_slack_c0ba1v2k269_1781262772545439."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "id": "claim_7_test_007",
+      "text": "Escalate when Customer reports multiple unauthorized charges across several order IDs, all showing IP mismatches from unfamiliar geographies. While the standard protocol covers a single fraud claim, multiple simultaneous unauthorized transactions indicate a broader account compromise. The agent must execute immediate account lockdown per protocol but then escalate to a dedicated fraud investigation team rather than processing multiple individual fraud claims autonomously."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:600cbd5ce1a06c8577530bea4135d9dfbf4aae26dac86fef31e1c713fe4d4b7f",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "*[4/20 \u00b7 Eligible]* I signed up for the Pro plan trial 6 days ago and forgot to cancel before the 7-day window closed. I was just charged $49/month. Can I get a refund? *Sent using* Claude The charge went through just 1 day after your trial ended totally understandable to miss. As a one-time courtesy, I can issue a full refund of $49.00 and cancel your subscription immediately. Your account will revert to the free plan. The refund will appear in 35 business days. Want me to go ahead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "synced_at": "2026-06-24T00:58:55.660191Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:e72b38f0e28d86f72f28ce4b36936b3a62c317b1702a1794cf737a705c6c0a15",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "*[12/20 \u00b7 Edge Case]* I received your skincare kit as a gift but I'm allergic to one of the ingredients. The person who gifted it doesn't want to ask for a refund themselves. Can I get store credit instead? *Sent using* Claude Health and safety concerns are something we take seriously allergic reactions are no small thing. While we normally need the original purchaser to process returns, we can work with you directly in cases like this. If you can provide the gift receipt, or the gifter's name/email just to locate the order, I can issue store credit for the full value. Which ingredient caused the reaction? I'd also like to flag it to our product team. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "synced_at": "2026-06-24T00:58:55.660191Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:d825de63c47e547db7bda367936f43f99b91359fc5c03ec95c4e90ae051bd7f7",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "*[13/20 \u00b7 Edge Case]* I just got charged $99 for an annual renewal on a subscription I totally forgot I had. I haven't logged into the account in 11 months. Can I get a full refund? *Sent using* Claude I can see your account has had zero logins in the past 11 months and the renewal processed just 2 days ago. Our policy doesn't guarantee refunds on renewals, but given the clear non-usage history I can offer: (A) a 50% refund ($49.50) + immediate cancellation, or (B) a full $99.00 refund + account termination, which requires manager approval (~24hrs). Which would you prefer? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262784193319",
+      "synced_at": "2026-06-24T00:58:55.660191Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:934cd37bf76fbdabd2a6a71d07899772cef11741a23f384e16f9af8ac28dfb85",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "*[19/20 \u00b7 Escalation]* There's a $230 charge on my card from your store (Order #ORD-77654) that I did NOT make. Someone must have used my account without my permission. I need this refunded immediately. *Sent using* Claude This is top priority I'm locking your account right now to prevent further unauthorized activity. I can see Order #ORD-77654 was placed from an IP that doesn't match your usual location, so I'm flagging this as a fraudulent transaction and escalating to our security team. You'll receive a fraud claim confirmation within 15 minutes. The $230 refund will be processed within 35 business days. Please also notify your card issuer to dispute the charge on their end. Can you confirm your account email for the security alert? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262857848579",
+      "synced_at": "2026-06-24T00:58:55.660191Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:600cbd5ce1a06c8577530bea4135d9dfbf4aae26dac86fef31e1c713fe4d4b7f",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "*[4/20 \u00b7 Eligible]* I signed up for the Pro plan trial 6 days ago and forgot to cancel before the 7-day window closed. I was just charged $49/month. Can I get a refund? *Sent using* Claude The charge went through just 1 day after your trial ended totally understandable to miss. As a one-time courtesy, I can issue a full refund of $49.00 and cancel your subscription immediately. Your account will revert to the free plan. The refund will appear in 35 business days. Want me to go ahead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "synced_at": "2026-06-24T00:58:55.660191Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:e72b38f0e28d86f72f28ce4b36936b3a62c317b1702a1794cf737a705c6c0a15",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "*[12/20 \u00b7 Edge Case]* I received your skincare kit as a gift but I'm allergic to one of the ingredients. The person who gifted it doesn't want to ask for a refund themselves. Can I get store credit instead? *Sent using* Claude Health and safety concerns are something we take seriously allergic reactions are no small thing. While we normally need the original purchaser to process returns, we can work with you directly in cases like this. If you can provide the gift receipt, or the gifter's name/email just to locate the order, I can issue store credit for the full value. Which ingredient caused the reaction? I'd also like to flag it to our product team. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "synced_at": "2026-06-24T00:58:55.660191Z"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "content_hash": "sha256:d825de63c47e547db7bda367936f43f99b91359fc5c03ec95c4e90ae051bd7f7",
+      "id": "evidence_7_test_007",
+      "retrieval_snippet": "*[13/20 \u00b7 Edge Case]* I just got charged $99 for an annual renewal on a subscription I totally forgot I had. I haven't logged into the account in 11 months. Can I get a full refund? *Sent using* Claude I can see your account has had zero logins in the past 11 months and the renewal processed just 2 days ago. Our policy doesn't guarantee refunds on renewals, but given the clear non-usage history I can offer: (A) a 50% refund ($49.50) + immediate cancellation, or (B) a full $99.00 refund + account termination, which requires manager approval (~24hrs). Which would you prefer? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262784193319",
+      "synced_at": "2026-06-24T00:58:55.660191Z"
+    }
+  ],
+  "generated_at": "2026-06-24T05:01:57.564675Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy this skill under the refund_eligibility skill slug with a dedicated intent classifier trigger keyed on: (1) customer self-report of unauthorized charge, AND (2) system-detected IP address mismatch against customer_usual_location. Ensure the account lockdown API call is the first action executed upon trigger confirmation, before any outbound message is composed. Wire the fraud claim initiation step to a human-in-the-loop confirmation checkpoint. Confirm that the security team alert webhook is active and that the 15-minute SLA for fraud claim confirmation is monitored. All five required input fields (transaction_amount, order_id, customer_email, transaction_ip_address, customer_usual_location) must be validated as present before the skill resolves autonomously; missing fields must trigger an input-collection loop. Ensure fallback routing to the standard refund_eligibility flow for cases that do not meet both trigger conditions.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/deterministic_security_event_requires_human_confirmation_only_for_fraud_claim_initiation.md",
+      "runtime": "deterministic_security_event_requires_human_confirmation_only_for_fraud_claim_initiation",
+      "test_instructions": "To validate this skill in staging: (1) Submit a synthetic fraud report with a confirmed IP mismatch and all five required fields populated \u2014 verify account lockdown fires first, security flag is sent, fraud claim confirmation is scheduled within 15 minutes, refund amount is stated correctly, and customer is advised to contact their card issuer. (2) Submit a fraud report with transaction_ip_address missing \u2014 verify the skill enters input-collection mode rather than proceeding. (3) Submit a non-fraud refund scenario (e.g., forgotten renewal) and verify the skill does not trigger lockdown and routes to standard refund flow. (4) Simulate a lockdown API failure and verify immediate human escalation is triggered. (5) Submit a fraud report where the customer cannot confirm their account email and verify that fraud claim initiation is paused and escalated to a human agent. Review all responses for compliance with the 3\u20135 business day refund timeline and presence of card issuer advisory language."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "refund_eligibility",
+  "source_bundle_hash": "sha256:16ed34af79426b31b05001fdea61357cdd32ac59a3b71bbb4aea0168ddf49e6b",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_001",
+      "name": "Confirmed IP Mismatch Unauthorized Charge \u2014 Standard Fraud Lockdown",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_002",
+      "name": "Unauthorized Charge Reported But No IP Mismatch Detectable",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_003",
+      "name": "Forgotten Annual Subscription Renewal \u2014 No Fraud Signal",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_004",
+      "name": "Customer Cannot Confirm Account Email After Lockdown Triggered",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_005",
+      "name": "Trial Period Overage Charge \u2014 No Unauthorized Access Claim",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_006",
+      "name": "Gift Recipient Reporting Health Safety Concern \u2014 No Fraud Signal",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_007",
+      "name": "Multiple Unauthorized Charges Across Different Orders With IP Mismatch",
+      "status": "pass"
+    }
+  ]
+}
