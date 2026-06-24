@@ -1,0 +1,65 @@
+[
+  {
+    "claim_ids": [
+      "claim_1_dt_001"
+    ],
+    "id": "evidence_1_dt_001",
+    "source_id": "src_slack_c0ba1v2k269_1781262638614199",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262638614199"
+  },
+  {
+    "claim_ids": [
+      "claim_2_dt_002"
+    ],
+    "id": "evidence_2_dt_002",
+    "source_id": "src_slack_c0ba1v2k269_1781262660706279",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262660706279"
+  },
+  {
+    "claim_ids": [
+      "claim_3_dt_003"
+    ],
+    "id": "evidence_3_dt_003",
+    "source_id": "src_slack_c0ba1v2k269_1781262721847029",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262721847029"
+  },
+  {
+    "claim_ids": [
+      "claim_4_dt_004"
+    ],
+    "id": "evidence_4_dt_004",
+    "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262732047749"
+  },
+  {
+    "claim_ids": [
+      "claim_5_dt_005"
+    ],
+    "id": "evidence_5_dt_005",
+    "source_id": "src_slack_c0ba1v2k269_1781262743711859",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262743711859"
+  },
+  {
+    "claim_ids": [
+      "claim_6_dt_006"
+    ],
+    "id": "evidence_6_dt_006",
+    "source_id": "src_slack_c0ba1v2k269_1781262754545559",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262754545559"
+  },
+  {
+    "claim_ids": [
+      "claim_7_dt_007"
+    ],
+    "id": "evidence_7_dt_007",
+    "source_id": "src_slack_c0ba1v2k269_1781262638614199",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262638614199"
+  }
+]
