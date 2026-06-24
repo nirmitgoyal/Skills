@@ -1,0 +1,300 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T07:17:40.585802Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262649628429",
+      "url_or_document_id": "C0BA1V2K269__1781262649.628429"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T07:17:40.585802Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262670462979",
+      "url_or_document_id": "C0BA1V2K269__1781262670.462979"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T07:17:40.585802Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262732047749",
+      "url_or_document_id": "C0BA1V2K269__1781262732.047749"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T07:17:40.585802Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262772545439",
+      "url_or_document_id": "C0BA1V2K269__1781262772.545439"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-24T07:17:40.585802Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262784193319",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262784193319",
+      "url_or_document_id": "C0BA1V2K269__1781262784.193319"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Eligible when Customer ordered blue wireless headphones (Order #ORD-31502) but received red ones. Agent must confirm merchant error, offer full refund ($79.00) OR free exchange for blue headphones, and automatically cover return shipping. Based directly on src_slack_c0ba1v2k269_1781262649628429."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Eligible when Customer ordered size Medium black jacket (Order #ORD-55201) but received size Large. Customer wants the correct size, not a refund. Agent must offer free exchange for size Medium black jacket with return shipping covered, confirming the correct item details before finalizing."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Ineligible when Customer received exactly the item ordered but it does not fit well. No fulfillment error exists. Wrong-item policy does not apply. Agent must decline and may direct to standard return or sizing guidance. Analogous to src_slack_c0ba1v2k269_1781262732047749 (buyer dissatisfaction, not merchant error)."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Escalate when Customer claims wrong item received but the provided order_id does not match any record in the system, so item_ordered cannot be confirmed. Agent cannot verify discrepancy and must escalate to a human agent rather than issuing a refund or exchange on unverified claim alone."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Escalate when Customer received wrong color variant and wants an exchange for the correct item. The correct variant is confirmed out of stock. Agent cannot auto-substitute and must escalate to a human agent to resolve the exchange or offer an alternative resolution such as a refund, with manager involvement."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Escalate when Customer purchased during a final-sale promotion and received the wrong item due to fulfillment error. The final-sale ineligibility rule conflicts with the merchant-error entitlement. Agent must not unilaterally deny or approve and must escalate to manager for confirmation before proceeding."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "id": "claim_7_test_007",
+      "text": "Ineligible when Customer demands a full refund AND a free exchange (both) for a wrong-item shipment. Policy allows only one remedy at the customer's choice. Agent must clarify that only one option may be selected and re-present the two choices. Request as stated is ineligible as submitted."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:c6125bab66c2eac257b9a35176941152f6f9de8b255472c8f105af18a268993a",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "*[2/20 \u00b7 Eligible]* I ordered the blue wireless headphones (Order #ORD-31502) but received the red ones instead. I want a refund or an exchange. *Sent using* Claude So sorry for the mix-up! Shipping the wrong color is our error, so you're absolutely eligible for a full refund or a free exchange your choice. We'll cover return shipping too. Would you prefer the $79.00 refund or an exchange for the correct blue headphones? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "synced_at": "2026-06-24T07:17:40.585802Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:600cbd5ce1a06c8577530bea4135d9dfbf4aae26dac86fef31e1c713fe4d4b7f",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "*[4/20 \u00b7 Eligible]* I signed up for the Pro plan trial 6 days ago and forgot to cancel before the 7-day window closed. I was just charged $49/month. Can I get a refund? *Sent using* Claude The charge went through just 1 day after your trial ended totally understandable to miss. As a one-time courtesy, I can issue a full refund of $49.00 and cancel your subscription immediately. Your account will revert to the free plan. The refund will appear in 35 business days. Want me to go ahead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "synced_at": "2026-06-24T07:17:40.585802Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:270ebbb585895ca3c9b1f6b13cf82ec76a9d9514822baa6f61d77bceb941f7ac",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "*[9/20 \u00b7 Ineligible]* I bought a dress during your Black Friday sale (Order #ORD-67890). It doesn't fit well. Can I return it for a refund? *Sent using* Claude Sorry the fit isn't right! I can see Order #ORD-67890 was placed during our Black Friday promotion, which was marked as a final sale event all items from that sale are non-refundable and non-returnable per the promotional terms disclosed at checkout. Unfortunately I'm unable to make exceptions to the final sale policy. Happy to help you with sizing guidance for a future purchase if that's useful. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "synced_at": "2026-06-24T07:17:40.585802Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:e72b38f0e28d86f72f28ce4b36936b3a62c317b1702a1794cf737a705c6c0a15",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "*[12/20 \u00b7 Edge Case]* I received your skincare kit as a gift but I'm allergic to one of the ingredients. The person who gifted it doesn't want to ask for a refund themselves. Can I get store credit instead? *Sent using* Claude Health and safety concerns are something we take seriously allergic reactions are no small thing. While we normally need the original purchaser to process returns, we can work with you directly in cases like this. If you can provide the gift receipt, or the gifter's name/email just to locate the order, I can issue store credit for the full value. Which ingredient caused the reaction? I'd also like to flag it to our product team. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "synced_at": "2026-06-24T07:17:40.585802Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:d825de63c47e547db7bda367936f43f99b91359fc5c03ec95c4e90ae051bd7f7",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "*[13/20 \u00b7 Edge Case]* I just got charged $99 for an annual renewal on a subscription I totally forgot I had. I haven't logged into the account in 11 months. Can I get a full refund? *Sent using* Claude I can see your account has had zero logins in the past 11 months and the renewal processed just 2 days ago. Our policy doesn't guarantee refunds on renewals, but given the clear non-usage history I can offer: (A) a 50% refund ($49.50) + immediate cancellation, or (B) a full $99.00 refund + account termination, which requires manager approval (~24hrs). Which would you prefer? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262784193319",
+      "synced_at": "2026-06-24T07:17:40.585802Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:c6125bab66c2eac257b9a35176941152f6f9de8b255472c8f105af18a268993a",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "*[2/20 \u00b7 Eligible]* I ordered the blue wireless headphones (Order #ORD-31502) but received the red ones instead. I want a refund or an exchange. *Sent using* Claude So sorry for the mix-up! Shipping the wrong color is our error, so you're absolutely eligible for a full refund or a free exchange your choice. We'll cover return shipping too. Would you prefer the $79.00 refund or an exchange for the correct blue headphones? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "synced_at": "2026-06-24T07:17:40.585802Z"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "content_hash": "sha256:600cbd5ce1a06c8577530bea4135d9dfbf4aae26dac86fef31e1c713fe4d4b7f",
+      "id": "evidence_7_test_007",
+      "retrieval_snippet": "*[4/20 \u00b7 Eligible]* I signed up for the Pro plan trial 6 days ago and forgot to cancel before the 7-day window closed. I was just charged $49/month. Can I get a refund? *Sent using* Claude The charge went through just 1 day after your trial ended totally understandable to miss. As a one-time courtesy, I can issue a full refund of $49.00 and cancel your subscription immediately. Your account will revert to the free plan. The refund will appear in 35 business days. Want me to go ahead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "synced_at": "2026-06-24T07:17:40.585802Z"
+    }
+  ],
+  "generated_at": "2026-06-24T07:24:08.626695Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy this skill under the refund_eligibility skill namespace with trigger phrase matching on customer reports of receiving an incorrect item, wrong variant, wrong color, or wrong product relative to their order confirmation. Ensure the skill has read access to order management data to verify order_id, item_ordered, and item_received fields. Link escalation path to the human agent queue with priority flag for safety-related wrong-item cases. Do not chain this skill with subscription-refund or final-sale-return skills without an explicit escalation handoff node between them.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/this_is_a_merchant_error_case_both_refund_and_exchange_should_be_offered_cover_return_shipping_automatically.md",
+      "runtime": "this_is_a_merchant_error_case_both_refund_and_exchange_should_be_offered_cover_return_shipping_automatically",
+      "test_instructions": "1. Submit a conversation where customer provides a valid order_id and clearly states item_received differs from item_ordered \u2014 verify agent responds with both refund amount and exchange option plus return shipping coverage statement. 2. Submit a conversation where item_received matches item_ordered per system records \u2014 verify agent does not grant wrong-item remedy and either declines or escalates. 3. Submit a conversation where order_id is not found in the system \u2014 verify agent requests clarification and does not issue any remedy. 4. Submit a conversation where the correct exchange item is out of stock \u2014 verify agent escalates rather than substituting or auto-refunding without offering exchange. 5. Submit a conversation where the customer asks for both refund and exchange simultaneously \u2014 verify agent explains only one remedy is available and re-presents the choice. 6. Submit a final-sale wrong-item case \u2014 verify agent does not auto-deny and instead escalates to manager queue."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "refund_eligibility",
+  "source_bundle_hash": "sha256:0abe1e5fa8b36514262a07d83900063071c3db22baf19a8d080e43870bbd1b0a",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_001",
+      "name": "Classic wrong color variant \u2014 eligible for refund or exchange",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_002",
+      "name": "Wrong variant with exchange preference",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_003",
+      "name": "Correct item received but poor fit \u2014 not a fulfillment error",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_004",
+      "name": "Wrong item shipped but order record unverifiable",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_005",
+      "name": "Wrong item shipped \u2014 replacement SKU out of stock",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_006",
+      "name": "Wrong item shipped on a final-sale order",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_007",
+      "name": "Wrong item shipped \u2014 customer requests both refund and exchange simultaneously",
+      "status": "pass"
+    }
+  ]
+}
