@@ -1,0 +1,332 @@
+name: skilllayer-trust-packet-validate
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-trust-packet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+
+      - name: Verify exact PR head
+        env:
+          EXPECTED_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD_SHA"
+          echo "validated_head_sha=$EXPECTED_HEAD_SHA" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Check required trust-packet files
+        run: |
+          test -f refund_eligibility/trust_packet.json
+          test -f refund_eligibility/SKILL.md
+          test -f refund_eligibility/approved_sources.json
+          test -f refund_eligibility/sources.json
+          test -f refund_eligibility/edge_cases.md
+          test -f refund_eligibility/REVIEW.md
+          test -d refund_eligibility/tests
+          test -d refund_eligibility/runtimes
+
+      - name: Validate trust-packet contract
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+          from pathlib import PurePosixPath
+
+          SKILL_SLUG = "refund_eligibility"
+          ALLOWED_REVIEW_STATUSES = {
+              "draft",
+              "blocked",
+              "validation_failed",
+              "stale",
+              "ready",
+          }
+          ALLOWED_SOURCE_TYPES = {
+              "notion",
+              "document",
+              "slack",
+              "support",
+              "other",
+          }
+          SOURCE_BUNDLE_HASH_PATTERN = re.compile(r"^sha256:[a-f0-9]{64}$")
+          RUNTIME_SLUG_PATTERN = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
+          root = Path(SKILL_SLUG)
+          packet = json.loads((root / "trust_packet.json").read_text(encoding="utf-8"))
+          approved_sources_sidecar = json.loads(
+              (root / "approved_sources.json").read_text(encoding="utf-8")
+          )
+          sources_sidecar = json.loads((root / "sources.json").read_text(encoding="utf-8"))
+
+          errors = []
+
+          def fail(message):
+              errors.append(message)
+
+          def require_object(value, context):
+              if not isinstance(value, dict):
+                  fail(context + " must be an object")
+                  return {}
+              return value
+
+          def require_text(value, context):
+              if not isinstance(value, str) or not value.strip():
+                  fail(context + " must be a non-empty string")
+                  return ""
+              return value
+
+          def require_list(value, context, min_length=0):
+              if not isinstance(value, list):
+                  fail(context + " must be a list")
+                  return []
+              if len(value) < min_length:
+                  fail(context + " must contain at least " + str(min_length) + " item(s)")
+              return value
+
+          def require_text_list(value, context, min_length=0):
+              values = require_list(value, context, min_length)
+              for index, value in enumerate(values):
+                  require_text(value, context + "[" + str(index) + "]")
+              return values
+
+          def require_fields(obj, context, fields):
+              for field in fields:
+                  require_text(obj.get(field), context + "." + field)
+
+          def collect_ids(items, context, field):
+              seen = set()
+              for index, item in enumerate(items):
+                  item_context = context + "[" + str(index) + "]"
+                  item_id = require_text(require_object(item, item_context).get(field), item_context + "." + field)
+                  if not item_id:
+                      continue
+                  if item_id in seen:
+                      fail("duplicate " + context + " " + field + " " + item_id)
+                  seen.add(item_id)
+              return seen
+
+          packet = require_object(packet, "packet")
+          required_top_level_strings = (
+              "schema_version",
+              "skill_slug",
+              "generated_at",
+              "source_bundle_hash",
+              "review_status",
+          )
+          for field in required_top_level_strings:
+              require_text(packet.get(field), "packet." + field)
+
+          if packet.get("schema_version") != "trust_packet.v1":
+              fail("schema_version must be trust_packet.v1")
+          if packet.get("skill_slug") != SKILL_SLUG:
+              fail("skill_slug must be " + SKILL_SLUG)
+          if packet.get("review_status") not in ALLOWED_REVIEW_STATUSES:
+              fail("review_status must be one of " + ", ".join(sorted(ALLOWED_REVIEW_STATUSES)))
+          source_bundle_hash = packet.get("source_bundle_hash")
+          if (
+              isinstance(source_bundle_hash, str)
+              and not SOURCE_BUNDLE_HASH_PATTERN.fullmatch(source_bundle_hash)
+          ):
+              fail("source_bundle_hash must match sha256:<64 lowercase hex>")
+
+          approved_sources = require_list(packet.get("approved_sources"), "packet.approved_sources", 1)
+          evidence = require_list(packet.get("evidence"), "packet.evidence", 1)
+          claims = require_list(packet.get("claims"), "packet.claims", 1)
+          tests = require_list(packet.get("tests"), "packet.tests", 5)
+          blockers = require_list(packet.get("blockers"), "packet.blockers")
+          runtime_profiles = require_list(packet.get("runtime_profiles"), "packet.runtime_profiles", 1)
+
+          if approved_sources_sidecar != approved_sources:
+              fail("approved_sources.json must match trust_packet.json approved_sources")
+
+          approved_source_ids = set()
+          for index, source in enumerate(approved_sources):
+              context = "approved_sources[" + str(index) + "]"
+              source = require_object(source, context)
+              source_id = require_text(source.get("source_id"), context + ".source_id")
+              if source_id in approved_source_ids:
+                  fail("duplicate approved source id " + source_id)
+              if source_id:
+                  approved_source_ids.add(source_id)
+              require_fields(
+                  source,
+                  context,
+                  (
+                      "source_type",
+                      "title",
+                      "url_or_document_id",
+                      "approved_by",
+                      "approved_at",
+                      "allowed_scope",
+                      "connector_or_import_source",
+                  ),
+              )
+              source_type = source.get("source_type")
+              if isinstance(source_type, str) and source_type not in ALLOWED_SOURCE_TYPES:
+                  fail("source_type must be one of " + ", ".join(sorted(ALLOWED_SOURCE_TYPES)))
+              require_text_list(source.get("allowed_data_points"), context + ".allowed_data_points", 1)
+
+          evidence_ids = collect_ids(evidence, "evidence", "id")
+          claim_ids = collect_ids(claims, "claims", "id")
+          blocker_ids = collect_ids(blockers, "blockers", "id")
+          collect_ids(tests, "tests", "id")
+
+          evidence_by_id = {}
+          for index, item in enumerate(evidence):
+              context = "evidence[" + str(index) + "]"
+              item = require_object(item, context)
+              evidence_id = require_text(item.get("id"), context + ".id")
+              if evidence_id:
+                  evidence_by_id[evidence_id] = item
+              source_id = require_text(item.get("source_id"), context + ".source_id")
+              if source_id and source_id not in approved_source_ids:
+                  fail("every evidence source must be approved: " + source_id)
+              for claim_id in require_text_list(item.get("claim_ids"), context + ".claim_ids", 1):
+                  if claim_id not in claim_ids:
+                      fail("evidence " + str(evidence_id) + " references unknown claim " + claim_id)
+              require_fields(item, context, ("retrieval_snippet", "synced_at", "content_hash"))
+              content_hash = item.get("content_hash")
+              if (
+                  isinstance(content_hash, str)
+                  and not SOURCE_BUNDLE_HASH_PATTERN.fullmatch(content_hash)
+              ):
+                  fail("content_hash must match sha256:<64 lowercase hex>")
+
+          expected_sources = []
+          source_by_id = {
+              source.get("source_id"): source
+              for source in approved_sources
+              if isinstance(source, dict)
+          }
+          for item in evidence:
+              if not isinstance(item, dict):
+                  continue
+              source = source_by_id.get(item.get("source_id"))
+              if not isinstance(source, dict):
+                  continue
+              expected_sources.append(
+                  {
+                      "claim_ids": item.get("claim_ids"),
+                      "id": item.get("id"),
+                      "source_id": item.get("source_id"),
+                      "source_type": source.get("source_type"),
+                      "title": source.get("title"),
+                  }
+              )
+          if sources_sidecar != expected_sources:
+              fail("sources.json must match trust_packet.json evidence summary")
+
+          claim_by_id = {}
+          for index, claim in enumerate(claims):
+              context = "claims[" + str(index) + "]"
+              claim = require_object(claim, context)
+              claim_id = require_text(claim.get("id"), context + ".id")
+              if claim_id:
+                  claim_by_id[claim_id] = claim
+              require_text(claim.get("text"), context + ".text")
+              claim_evidence_ids = require_text_list(claim.get("evidence_ids"), context + ".evidence_ids")
+              claim_blocker_ids = require_text_list(claim.get("blocker_ids"), context + ".blocker_ids")
+              if not claim_evidence_ids and not claim_blocker_ids:
+                  fail("claim {claim_id} must have evidence or blockers".format(claim_id=claim_id))
+              for evidence_id in claim_evidence_ids:
+                  if evidence_id not in evidence_ids:
+                      fail("claim " + str(claim_id) + " references unknown evidence " + evidence_id)
+              for blocker_id in claim_blocker_ids:
+                  if blocker_id not in blocker_ids:
+                      fail("claim " + str(claim_id) + " references unknown blocker " + blocker_id)
+
+          for evidence_id, item in evidence_by_id.items():
+              for claim_id in item.get("claim_ids", []):
+                  claim = claim_by_id.get(claim_id)
+                  if claim is not None and evidence_id not in claim.get("evidence_ids", []):
+                      fail("claim " + claim_id + " does not list evidence " + evidence_id)
+
+          for claim_id, claim in claim_by_id.items():
+              for evidence_id in claim.get("evidence_ids", []):
+                  item = evidence_by_id.get(evidence_id)
+                  if item is not None and claim_id not in item.get("claim_ids", []):
+                      fail("evidence " + evidence_id + " does not list claim " + claim_id)
+
+          for index, blocker in enumerate(blockers):
+              context = "blockers[" + str(index) + "]"
+              blocker = require_object(blocker, context)
+              blocker_id = require_text(blocker.get("id"), context + ".id")
+              require_fields(blocker, context, ("code", "message", "owner"))
+              if not isinstance(blocker.get("retryable"), bool):
+                  fail(context + ".retryable must be a boolean")
+              for claim_id in require_text_list(blocker.get("claim_ids"), context + ".claim_ids"):
+                  if claim_id not in claim_ids:
+                      fail("blocker " + str(blocker_id) + " references unknown claim " + claim_id)
+
+          for index, generated_test in enumerate(tests):
+              context = "tests[" + str(index) + "]"
+              generated_test = require_object(generated_test, context)
+              test_id = require_text(generated_test.get("id"), context + ".id")
+              require_fields(generated_test, context, ("name", "expected_behavior", "status"))
+              status = generated_test.get("status")
+              if isinstance(status, str) and status not in {"pass", "fail", "needs_source"}:
+                  fail("test " + str(test_id) + " has invalid status " + status)
+              for claim_id in require_text_list(generated_test.get("claim_ids"), context + ".claim_ids", 1):
+                  if claim_id not in claim_ids:
+                      fail("test {test_id} references unknown claim".format(test_id=test_id) + " " + claim_id)
+              for evidence_id in require_text_list(generated_test.get("evidence_ids"), context + ".evidence_ids"):
+                  if evidence_id not in evidence_ids:
+                      fail("test " + str(test_id) + " references unknown evidence " + evidence_id)
+
+          if packet.get("review_status") == "ready" and blockers:
+              fail("ready trust packet cannot contain blockers")
+
+          for index, profile in enumerate(runtime_profiles):
+              context = "runtime_profiles[" + str(index) + "]"
+              profile = require_object(profile, context)
+              require_fields(
+                  profile,
+                  context,
+                  ("runtime", "profile_path", "install_instructions", "test_instructions", "owner"),
+              )
+              runtime = profile.get("runtime")
+              if isinstance(runtime, str) and not RUNTIME_SLUG_PATTERN.fullmatch(runtime):
+                  fail("runtime must match ^[a-z0-9][a-z0-9_-]*$")
+              profile_path_value = profile.get("profile_path")
+              if not isinstance(profile_path_value, str) or not profile_path_value.strip():
+                  continue
+              profile_path = PurePosixPath(profile_path_value)
+              if (
+                  not profile_path.parts
+                  or profile_path.is_absolute()
+                  or ".." in profile_path.parts
+              ):
+                  fail("runtime profile_path must be relative and stay inside the trust packet folder")
+                  continue
+              runtime_file = root.joinpath(*profile_path.parts)
+              if not runtime_file.is_file():
+                  fail("runtime profile file missing: " + profile_path_value)
+
+          if errors:
+              raise SystemExit("\n".join(errors))
+          PY
+
+      - name: Check runtime skill has no review citations
+        run: |
+          ! grep -Ei "http://|https://|source_id|sources.json|approved_sources.json|retrieval_snippet|notion://|support://" refund_eligibility/SKILL.md
+
+      - name: Install generated test dependencies
+        run: |
+          python -m pip install pytest
+
+      - name: Run deterministic generated tests
+        run: |
+          python -m pytest refund_eligibility/tests
