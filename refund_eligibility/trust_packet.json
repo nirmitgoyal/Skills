@@ -1,0 +1,270 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:07:12.700148Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262686690199",
+      "url_or_document_id": "C0BA1V2K269__1781262686.690199"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:07:12.700148Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262772545439",
+      "url_or_document_id": "C0BA1V2K269__1781262772.545439"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:07:12.700148Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262784193319",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262784193319",
+      "url_or_document_id": "C0BA1V2K269__1781262784.193319"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:07:12.700148Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262809670129",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262809670129",
+      "url_or_document_id": "C0BA1V2K269__1781262809.670129"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:07:12.700148Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262857848579",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262857848579",
+      "url_or_document_id": "C0BA1V2K269__1781262857.848579"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Eligible when Customer reports an unauthorized charge on Order #ORD-77654 for $230. System confirms the order was placed from an IP that does not match the customer's usual login location. Agent must lock the account immediately, flag the transaction as fraudulent, escalate to the security team, send fraud claim confirmation within 15 minutes, communicate a 35-business-day refund timeline, advise the customer to contact their card issuer, and confirm the customer's account email before dispatching the security alert. Refund is eligible for full amount."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Escalate when Customer reports an unauthorized charge but the system cannot retrieve reported_ip_location or usual_login_location data. Only one fraud signal (customer report) is present without IP corroboration. Agent must lock the account as a precaution, escalate to the security team for manual review, and must not process the refund autonomously until the security team confirms fraud. Do not deny the claim; hold pending escalation."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Escalate when System detects a login from an IP address that does not match the customer's usual location, but the customer has not reported an unauthorized charge or account compromise. Only one fraud signal is present. Agent must escalate to the security team for review, alert the customer to the suspicious login, and must not initiate a refund without a confirmed fraud claim. Escalation is required before any further action."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Escalate when Customer reports an unauthorized charge and IP mismatch is confirmed, but the customer is unable to confirm the account email associated with the order when prompted. Agent must not dispatch the security alert without email confirmation per the workflow rule. Agent must escalate to the security team for identity verification before proceeding. Account should still be locked as a precautionary measure."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Escalate when Customer reports an unauthorized charge referencing an order_id that cannot be located in the system or is associated with a different account. Agent must not deny the claim outright and must not attempt self-service resolution. The case must be escalated to the security team for manual investigation. The agent should advise the customer to also contact their card issuer while the internal investigation proceeds."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Ineligible when Customer claims a charge is unauthorized, but the system shows the order was placed from the customer's usual IP location with no IP mismatch flag, no customer escalation flag, and the customer's account shows recent normal login activity. No fraud signals are present. The transaction does not meet the criteria for the fraud workflow. Agent must not lock the account or file a fraud claim and should inform the customer that no fraud indicators were detected, directing them to the standard return/refund process if applicable."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:5f01341f86eb27cef8f4a8e0c60fd45a529e7ee620ac88e33cf692b1f4d769c4",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "*[5/20 \u00b7 Eligible]* I paid for 2-day shipping on Order #ORD-55120 but the package arrived 8 days late. The item was a gift for an event that already passed it's now useless. I want a refund. *Sent using* Claude I sincerely apologize 8 days on a 2-day order is unacceptable. Since the late delivery made the item useless for its intended purpose, you're eligible for a full refund including the shipping fee. I'll process $124.99 back to your original payment method now. You're also welcome to keep the item. Is there anything else I can do to make this right? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+      "synced_at": "2026-06-23T17:07:12.700148Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:e72b38f0e28d86f72f28ce4b36936b3a62c317b1702a1794cf737a705c6c0a15",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "*[12/20 \u00b7 Edge Case]* I received your skincare kit as a gift but I'm allergic to one of the ingredients. The person who gifted it doesn't want to ask for a refund themselves. Can I get store credit instead? *Sent using* Claude Health and safety concerns are something we take seriously allergic reactions are no small thing. While we normally need the original purchaser to process returns, we can work with you directly in cases like this. If you can provide the gift receipt, or the gifter's name/email just to locate the order, I can issue store credit for the full value. Which ingredient caused the reaction? I'd also like to flag it to our product team. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "synced_at": "2026-06-23T17:07:12.700148Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:d825de63c47e547db7bda367936f43f99b91359fc5c03ec95c4e90ae051bd7f7",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "*[13/20 \u00b7 Edge Case]* I just got charged $99 for an annual renewal on a subscription I totally forgot I had. I haven't logged into the account in 11 months. Can I get a full refund? *Sent using* Claude I can see your account has had zero logins in the past 11 months and the renewal processed just 2 days ago. Our policy doesn't guarantee refunds on renewals, but given the clear non-usage history I can offer: (A) a 50% refund ($49.50) + immediate cancellation, or (B) a full $99.00 refund + account termination, which requires manager approval (~24hrs). Which would you prefer? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262784193319",
+      "synced_at": "2026-06-23T17:07:12.700148Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:0fcfc4d7a16c330abc2b923d90c2dba3bd08c4e0d3af9458bccc7d7026c58504",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "*[15/20 \u00b7 Edge Case]* I was charged $45 in customs fees for Order #ORD-88123 shipped to Canada. Your website said \"duties included\" at checkout this feels like false advertising. I want that $45 back. *Sent using* Claude You're absolutely right to flag this. If our site listed \"duties included\" at the time of purchase, we need to honor that. Could you share a screenshot of where you saw that messaging? Once confirmed, I'll refund the $45 in full and it also helps us fix the listing for future customers. I'll keep this case open while you gather that. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262809670129",
+      "synced_at": "2026-06-23T17:07:12.700148Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:934cd37bf76fbdabd2a6a71d07899772cef11741a23f384e16f9af8ac28dfb85",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "*[19/20 \u00b7 Escalation]* There's a $230 charge on my card from your store (Order #ORD-77654) that I did NOT make. Someone must have used my account without my permission. I need this refunded immediately. *Sent using* Claude This is top priority I'm locking your account right now to prevent further unauthorized activity. I can see Order #ORD-77654 was placed from an IP that doesn't match your usual location, so I'm flagging this as a fraudulent transaction and escalating to our security team. You'll receive a fraud claim confirmation within 15 minutes. The $230 refund will be processed within 35 business days. Please also notify your card issuer to dispute the charge on their end. Can you confirm your account email for the security alert? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262857848579",
+      "synced_at": "2026-06-23T17:07:12.700148Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:5f01341f86eb27cef8f4a8e0c60fd45a529e7ee620ac88e33cf692b1f4d769c4",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "*[5/20 \u00b7 Eligible]* I paid for 2-day shipping on Order #ORD-55120 but the package arrived 8 days late. The item was a gift for an event that already passed it's now useless. I want a refund. *Sent using* Claude I sincerely apologize 8 days on a 2-day order is unacceptable. Since the late delivery made the item useless for its intended purpose, you're eligible for a full refund including the shipping fee. I'll process $124.99 back to your original payment method now. You're also welcome to keep the item. Is there anything else I can do to make this right? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+      "synced_at": "2026-06-23T17:07:12.700148Z"
+    }
+  ],
+  "generated_at": "2026-06-24T05:01:18.328639Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy this skill under the 'refund_eligibility' skill slug. Attach to triggers: (1) customer message containing keywords indicating unauthorized charge, account compromise, or fraudulent transaction; (2) system event for IP mismatch detection on login. Ensure the runtime has read access to order management system for order_id lookup, IP log data for mismatch comparison, and write access to account lockdown controls and fraud claim filing API. Security team escalation webhook must be configured and tested before go-live. Fraud claim confirmation email template must be pre-loaded with a 15-minute SLA dispatch requirement. Set refund SLA parameter to 35 business days in the refund processing module. Manager approval workflow must be accessible for escalated high-value cases.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/deterministic_check_ip_mismatch_customer_escalation_flag_security_team_escalation_fraud_claim_initiation.md",
+      "runtime": "deterministic_check_ip_mismatch_customer_escalation_flag_security_team_escalation_fraud_claim_initiation",
+      "test_instructions": "1. Simulate a customer message reporting an unauthorized charge with a valid order_id and confirm the agent locks the account, escalates to the security team, requests account email, and communicates the 35-business-day SLA. 2. Inject a system IP mismatch event without a customer fraud report and confirm the agent escalates rather than self-resolving. 3. Provide a fraud report with an unrecognized order_id and confirm the agent escalates rather than denying. 4. Provide a fraud report but withhold the customer email and confirm the agent requests it before dispatching the security alert. 5. Simulate a dispute with no IP mismatch and no escalation flag and confirm the agent routes to standard refund flow rather than fraud workflow. 6. Verify fraud claim confirmation is triggered within the 15-minute window in the staging environment. 7. Confirm account lockdown API call is the first outbound action in all confirmed fraud scenarios."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "refund_eligibility",
+  "source_bundle_hash": "sha256:377c8d49b8079ead4570697a43c6111b324b182b193a54b0f79a70041aa73c0d",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_001",
+      "name": "Confirmed IP Mismatch With Customer Fraud Report",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_002",
+      "name": "Customer Reports Unauthorized Charge No IP Data Available",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_003",
+      "name": "IP Mismatch Detected But Customer Does Not Report Unauthorized Charge",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_004",
+      "name": "Customer Cannot Confirm Account Email During Fraud Report",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_005",
+      "name": "Unauthorized Charge Report With No Matching Order ID In System",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_006",
+      "name": "Legitimate Authorized Purchase Disputed as Unauthorized Without Supporting Signals",
+      "status": "pass"
+    }
+  ]
+}
