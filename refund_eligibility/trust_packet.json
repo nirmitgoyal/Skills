@@ -1,0 +1,287 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T16:59:29.259469Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262743711859",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262743711859",
+      "url_or_document_id": "C0BA1V2K269__1781262743.711859"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T16:59:29.259469Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262754545559",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262754545559",
+      "url_or_document_id": "C0BA1V2K269__1781262754.545559"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T16:59:29.259469Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262772545439",
+      "url_or_document_id": "C0BA1V2K269__1781262772.545439"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T16:59:29.259469Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262809670129",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262809670129",
+      "url_or_document_id": "C0BA1V2K269__1781262809.670129"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Eligible when Customer cancels a $120/year annual plan after 3 months. months_used=3, total_months=12. Refund = (12-3)/12 \u00d7 $120 = $90.00. Access ends immediately; refund in 35 business days. Directly backed by src_slack_c0ba1v2k269_1781262754545559."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Ineligible when Customer cancels a $240/year annual plan after 7 months. months_used=7 exceeds the 6-month eligibility window, so no pro-rated refund is available under this policy."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Ineligible when Customer cancels a $120/year plan at exactly 6 months used. Policy requires cancellation within the first 6 months (months_used < 6); at months_used=6 the customer is outside the eligibility window and no refund applies."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Escalate when Customer claims they have used only 5 months of their 18-month plan ($360), but the system shows no reliable record. Stated usage places them at the eligibility boundary. Escalate for manual verification before calculating or denying a refund."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Eligible when Customer cancels a $480 24-month plan after 4 months. months_used=4 < 6, so eligible. Refund = (24-4)/24 \u00d7 $480 = $400.00. Access ends immediately; refund within 35 business days."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Eligible when Customer cancels a $360/year annual plan after 1 month. months_used=1 < 6. Refund = (12-1)/12 \u00d7 $360 = $330.00. Access ends immediately; refund within 35 business days."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "id": "claim_7_test_007",
+      "text": "Escalate when Customer references a multi-seat enterprise agreement with a non-standard billing structure. Plan type does not clearly qualify as a standard annual or long-term subscription; escalate to determine whether this policy applies before proceeding."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:d11a0aa269a0c2706c486676dccd0105317ea9c97d3c01c7129fff21c527d260",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "*[10/20 \u00b7 Ineligible]* I bought a software license yesterday (Order #ORD-78234), downloaded and activated it, but I've decided I don't really need it. Can I get a refund? *Sent using* Claude Unfortunately, once a digital license has been downloaded and activated the product has been consumed, and our digital goods policy disclosed at checkout doesn't allow refunds at that point. If the software isn't working correctly, that's a different situation I can absolutely help with. Is there a technical issue I can assist you with instead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262743711859",
+      "synced_at": "2026-06-23T16:59:29.259469Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:2905a286e21de03249f7beafe0462769a3b9fc2995daf6eb044cb5ffc727ae86",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "*[11/20 \u00b7 Edge Case]* I'm cancelling my annual plan ($120/year) after using it for 3 months. Am I entitled to a pro-rated refund for the remaining 9 months? *Sent using* Claude Great question! Annual plans cancelled within the first 6 months are eligible for a pro-rated refund. You've used 3 of 12 months, so you'd receive $90.00 back (9/12 of $120). If I process the cancellation now, access ends immediately and the refund hits your card in 35 business days. Want me to go ahead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262754545559",
+      "synced_at": "2026-06-23T16:59:29.259469Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:e72b38f0e28d86f72f28ce4b36936b3a62c317b1702a1794cf737a705c6c0a15",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "*[12/20 \u00b7 Edge Case]* I received your skincare kit as a gift but I'm allergic to one of the ingredients. The person who gifted it doesn't want to ask for a refund themselves. Can I get store credit instead? *Sent using* Claude Health and safety concerns are something we take seriously allergic reactions are no small thing. While we normally need the original purchaser to process returns, we can work with you directly in cases like this. If you can provide the gift receipt, or the gifter's name/email just to locate the order, I can issue store credit for the full value. Which ingredient caused the reaction? I'd also like to flag it to our product team. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "synced_at": "2026-06-23T16:59:29.259469Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:0fcfc4d7a16c330abc2b923d90c2dba3bd08c4e0d3af9458bccc7d7026c58504",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "*[15/20 \u00b7 Edge Case]* I was charged $45 in customs fees for Order #ORD-88123 shipped to Canada. Your website said \"duties included\" at checkout this feels like false advertising. I want that $45 back. *Sent using* Claude You're absolutely right to flag this. If our site listed \"duties included\" at the time of purchase, we need to honor that. Could you share a screenshot of where you saw that messaging? Once confirmed, I'll refund the $45 in full and it also helps us fix the listing for future customers. I'll keep this case open while you gather that. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262809670129",
+      "synced_at": "2026-06-23T16:59:29.259469Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:d11a0aa269a0c2706c486676dccd0105317ea9c97d3c01c7129fff21c527d260",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "*[10/20 \u00b7 Ineligible]* I bought a software license yesterday (Order #ORD-78234), downloaded and activated it, but I've decided I don't really need it. Can I get a refund? *Sent using* Claude Unfortunately, once a digital license has been downloaded and activated the product has been consumed, and our digital goods policy disclosed at checkout doesn't allow refunds at that point. If the software isn't working correctly, that's a different situation I can absolutely help with. Is there a technical issue I can assist you with instead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262743711859",
+      "synced_at": "2026-06-23T16:59:29.259469Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:2905a286e21de03249f7beafe0462769a3b9fc2995daf6eb044cb5ffc727ae86",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "*[11/20 \u00b7 Edge Case]* I'm cancelling my annual plan ($120/year) after using it for 3 months. Am I entitled to a pro-rated refund for the remaining 9 months? *Sent using* Claude Great question! Annual plans cancelled within the first 6 months are eligible for a pro-rated refund. You've used 3 of 12 months, so you'd receive $90.00 back (9/12 of $120). If I process the cancellation now, access ends immediately and the refund hits your card in 35 business days. Want me to go ahead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262754545559",
+      "synced_at": "2026-06-23T16:59:29.259469Z"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "content_hash": "sha256:e72b38f0e28d86f72f28ce4b36936b3a62c317b1702a1794cf737a705c6c0a15",
+      "id": "evidence_7_test_007",
+      "retrieval_snippet": "*[12/20 \u00b7 Edge Case]* I received your skincare kit as a gift but I'm allergic to one of the ingredients. The person who gifted it doesn't want to ask for a refund themselves. Can I get store credit instead? *Sent using* Claude Health and safety concerns are something we take seriously allergic reactions are no small thing. While we normally need the original purchaser to process returns, we can work with you directly in cases like this. If you can provide the gift receipt, or the gifter's name/email just to locate the order, I can issue store credit for the full value. Which ingredient caused the reaction? I'd also like to flag it to our product team. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "synced_at": "2026-06-23T16:59:29.259469Z"
+    }
+  ],
+  "generated_at": "2026-06-24T05:00:57.169599Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy under skill slug 'refund_eligibility'. Attach to cancellation intents for annual and long-term subscription plan types. Ensure the runtime has read access to the customer's subscription record (plan type, start date, price paid, total term months) to auto-populate months_used and plan_price where possible, reducing manual entry errors. Gate this skill so it does not fire for month-to-month plans or one-time digital license purchases.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/eligibility_deterministic_calculation_total_months_months_used_total_months_price_refund_sla_35_business_days.md",
+      "runtime": "eligibility_deterministic_calculation_total_months_months_used_total_months_price_refund_sla_35_business_days",
+      "test_instructions": "Run all seven deterministic tests in the test suite before promoting to production. Verify that: (1) the eligibility gate correctly blocks months_used >= 6 as ineligible; (2) the refund formula produces the correct two-decimal-place value for each eligible test; (3) needs_escalation paths halt calculation and surface an escalation prompt; (4) the 35-business-day SLA and immediate access termination disclosures appear in every eligible response; (5) no refund figure is presented to the customer before explicit confirmation is solicited."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "refund_eligibility",
+  "source_bundle_hash": "sha256:7fee610f08e303c23307fd60a80d46400c3da05616bde5d9deca3f0eaed8c441",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_001",
+      "name": "Standard annual plan cancelled at 3 months",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_002",
+      "name": "Annual plan cancelled after 7 months",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_003",
+      "name": "Annual plan cancelled at exactly 6 months boundary",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_004",
+      "name": "Months used cannot be verified and customer claims usage near boundary",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_005",
+      "name": "24-month plan cancelled at 4 months",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_006",
+      "name": "Annual plan cancelled after 1 month",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_007",
+      "name": "Customer provides ambiguous plan type (custom enterprise agreement)",
+      "status": "pass"
+    }
+  ]
+}
