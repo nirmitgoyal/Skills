@@ -1,0 +1,270 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:13:45.791888Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262649628429",
+      "url_or_document_id": "C0BA1V2K269__1781262649.628429"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:13:45.791888Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262670462979",
+      "url_or_document_id": "C0BA1V2K269__1781262670.462979"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:13:45.791888Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262686690199",
+      "url_or_document_id": "C0BA1V2K269__1781262686.690199"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:13:45.791888Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262721847029",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262721847029",
+      "url_or_document_id": "C0BA1V2K269__1781262721.847029"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-23T17:13:45.791888Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262732047749",
+      "url_or_document_id": "C0BA1V2K269__1781262732.047749"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_dt_001"
+      ],
+      "id": "claim_1_dt_001",
+      "text": "Eligible when Customer requests a return and supplies a valid order number (e.g., ORD-31502). The proof-of-purchase gate is cleared because order_number_provided == true. Processing proceeds to evaluate the specific return scenario. Backed by src_slack_c0ba1v2k269_1781262649628429, where Order #ORD-31502 was accepted as sufficient proof to initiate refund or exchange processing."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_dt_002"
+      ],
+      "id": "claim_2_dt_002",
+      "text": "Ineligible when Customer requests a refund for a gift purchase but cannot provide an order number, receipt, bank statement, or email confirmation. All four proof fields are false. Return processing is blocked. Agent prompts the customer to check email for an order confirmation or locate the charge on a bank or card statement. Backed by src_slack_c0ba1v2k269_1781262721847029, where the agent explicitly declined to process without proof and listed acceptable substitute documents."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_dt_003"
+      ],
+      "id": "claim_3_dt_003",
+      "text": "Ineligible when Customer provides a valid order number (ORD-67890), so the proof-of-purchase gate is cleared. However, the order was placed during a final-sale promotional event, making the item non-refundable and non-returnable per the disclosed promotional terms. Eligibility is denied on policy grounds after the gate is passed, not because of missing proof. Backed by src_slack_c0ba1v2k269_1781262732047749."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_dt_004"
+      ],
+      "id": "claim_4_dt_004",
+      "text": "Eligible when Customer cannot locate their order number or receipt but provides a bank statement entry showing the transaction amount and merchant. bank_statement_transaction_provided == true satisfies the proof-of-purchase gate as an acceptable substitute document. Processing proceeds to evaluate the specific return scenario. Backed by the agent guidance in src_slack_c0ba1v2k269_1781262721847029, which explicitly cites 'the transaction on your bank/card statement' as a qualifying proof document."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_dt_005"
+      ],
+      "id": "claim_5_dt_005",
+      "text": "Eligible when Customer supplies Order #ORD-55120 and reports a package arrived 8 days after a promised 2-day delivery window, rendering the gift item unusable. order_number_provided == true clears the proof gate. Post-gate evaluation finds the late delivery constitutes carrier fault, qualifying the customer for a full refund including the shipping fee. Backed by src_slack_c0ba1v2k269_1781262686690199."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_dt_006"
+      ],
+      "id": "claim_6_dt_006",
+      "text": "Escalate when Customer cannot provide any form of proof of purchase and, after being prompted to retrieve documentation, insists they have none and demands to speak with a supervisor. The agent cannot process the return without documentation and must not fabricate an exception. The request must be escalated to a human agent for manual handling. Backed by the escalation rule derived from the gating policy established in src_slack_c0ba1v2k269_1781262721847029 and the runtime gating logic."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_dt_001"
+      ],
+      "content_hash": "sha256:c6125bab66c2eac257b9a35176941152f6f9de8b255472c8f105af18a268993a",
+      "id": "evidence_1_dt_001",
+      "retrieval_snippet": "*[2/20 \u00b7 Eligible]* I ordered the blue wireless headphones (Order #ORD-31502) but received the red ones instead. I want a refund or an exchange. *Sent using* Claude So sorry for the mix-up! Shipping the wrong color is our error, so you're absolutely eligible for a full refund or a free exchange your choice. We'll cover return shipping too. Would you prefer the $79.00 refund or an exchange for the correct blue headphones? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "synced_at": "2026-06-23T17:13:45.791888Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_dt_002"
+      ],
+      "content_hash": "sha256:600cbd5ce1a06c8577530bea4135d9dfbf4aae26dac86fef31e1c713fe4d4b7f",
+      "id": "evidence_2_dt_002",
+      "retrieval_snippet": "*[4/20 \u00b7 Eligible]* I signed up for the Pro plan trial 6 days ago and forgot to cancel before the 7-day window closed. I was just charged $49/month. Can I get a refund? *Sent using* Claude The charge went through just 1 day after your trial ended totally understandable to miss. As a one-time courtesy, I can issue a full refund of $49.00 and cancel your subscription immediately. Your account will revert to the free plan. The refund will appear in 35 business days. Want me to go ahead? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+      "synced_at": "2026-06-23T17:13:45.791888Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_dt_003"
+      ],
+      "content_hash": "sha256:5f01341f86eb27cef8f4a8e0c60fd45a529e7ee620ac88e33cf692b1f4d769c4",
+      "id": "evidence_3_dt_003",
+      "retrieval_snippet": "*[5/20 \u00b7 Eligible]* I paid for 2-day shipping on Order #ORD-55120 but the package arrived 8 days late. The item was a gift for an event that already passed it's now useless. I want a refund. *Sent using* Claude I sincerely apologize 8 days on a 2-day order is unacceptable. Since the late delivery made the item useless for its intended purpose, you're eligible for a full refund including the shipping fee. I'll process $124.99 back to your original payment method now. You're also welcome to keep the item. Is there anything else I can do to make this right? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+      "synced_at": "2026-06-23T17:13:45.791888Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_dt_004"
+      ],
+      "content_hash": "sha256:d6f98fa59f2707e812535c48d337299d4116c0857b05029676de13688125a6e3",
+      "id": "evidence_4_dt_004",
+      "retrieval_snippet": "*[8/20 \u00b7 Ineligible]* Hi, I bought a product as a gift about a month ago and the recipient wants to return it. I don't have the order number or receipt. Can they still get a refund? *Sent using* Claude I'd love to help, but without an order number or receipt I can't locate the transaction to verify the purchase. To process any return we do need proof of purchase. Could you check your email for an order confirmation, or find the transaction on your bank/card statement? With either of those I can track down the order and move forward. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262721847029",
+      "synced_at": "2026-06-23T17:13:45.791888Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_dt_005"
+      ],
+      "content_hash": "sha256:270ebbb585895ca3c9b1f6b13cf82ec76a9d9514822baa6f61d77bceb941f7ac",
+      "id": "evidence_5_dt_005",
+      "retrieval_snippet": "*[9/20 \u00b7 Ineligible]* I bought a dress during your Black Friday sale (Order #ORD-67890). It doesn't fit well. Can I return it for a refund? *Sent using* Claude Sorry the fit isn't right! I can see Order #ORD-67890 was placed during our Black Friday promotion, which was marked as a final sale event all items from that sale are non-refundable and non-returnable per the promotional terms disclosed at checkout. Unfortunately I'm unable to make exceptions to the final sale policy. Happy to help you with sizing guidance for a future purchase if that's useful. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "synced_at": "2026-06-23T17:13:45.791888Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_dt_006"
+      ],
+      "content_hash": "sha256:c6125bab66c2eac257b9a35176941152f6f9de8b255472c8f105af18a268993a",
+      "id": "evidence_6_dt_006",
+      "retrieval_snippet": "*[2/20 \u00b7 Eligible]* I ordered the blue wireless headphones (Order #ORD-31502) but received the red ones instead. I want a refund or an exchange. *Sent using* Claude So sorry for the mix-up! Shipping the wrong color is our error, so you're absolutely eligible for a full refund or a free exchange your choice. We'll cover return shipping too. Would you prefer the $79.00 refund or an exchange for the correct blue headphones? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+      "synced_at": "2026-06-23T17:13:45.791888Z"
+    }
+  ],
+  "generated_at": "2026-06-24T05:01:38.813671Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy this skill under the 'refund_eligibility' skill slug. Ensure the four boolean input fields (order_number_provided, receipt_provided, bank_statement_transaction_provided, purchase_email_confirmation_provided) are surfaced in the conversation context before the skill evaluates any return or refund scenario. The gating check must execute as the first step in the skill's decision tree, prior to any policy-specific evaluation (e.g., return window, final sale, shipping fault). Wire the escalation path so that a human agent queue is reachable when the customer confirms they cannot provide any proof document. No fallback processing of returns without proof is permitted at the automated layer.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/gating_rule_if_proof_of_purchase_null_or_proof_of_purchase_false_then_return_processing_blocked_until_one_of_proof_documents_provided.md",
+      "runtime": "gating_rule_if_proof_of_purchase_null_or_proof_of_purchase_false_then_return_processing_blocked_until_one_of_proof_documents_provided",
+      "test_instructions": "1. Simulate a return request with order_number_provided=true; verify the agent proceeds past the gate to policy evaluation without re-requesting proof. 2. Simulate a return request with all four proof fields set to false; verify the agent blocks processing and enumerates all four acceptable document types in the response. 3. Simulate the gate-blocked scenario followed by the customer supplying a bank statement entry; set bank_statement_transaction_provided=true in the second turn and verify the gate clears immediately. 4. Simulate a return where order_number_provided=true but the order is tagged as a final-sale event; verify the denial message references final-sale policy, not missing proof. 5. Simulate a customer with no proof who explicitly requests escalation; verify the skill routes to the human agent queue without processing the return. 6. Confirm no test case allows a return to be processed when all four proof fields remain false, regardless of other eligibility signals."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "refund_eligibility",
+  "source_bundle_hash": "sha256:4d6f4414c65ea0706994de4183f2de88ec2ed50d1722ea98716f5d5e77f7b79f",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_dt_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_dt_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "dt_001",
+      "name": "Return request with valid order number provided",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_dt_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_dt_002"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "dt_002",
+      "name": "Return request with no proof of purchase of any kind",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_dt_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_dt_003"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "dt_003",
+      "name": "Proof gate passed but return blocked by final-sale policy",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_dt_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_dt_004"
+      ],
+      "expected_behavior": "eligible",
+      "id": "dt_004",
+      "name": "Return request supported only by bank statement transaction",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_dt_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_dt_005"
+      ],
+      "expected_behavior": "eligible",
+      "id": "dt_005",
+      "name": "Late delivery refund request with order number confirmed",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_dt_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_dt_006"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "dt_006",
+      "name": "Refund request with no proof and customer insists on escalation",
+      "status": "pass"
+    }
+  ]
+}
