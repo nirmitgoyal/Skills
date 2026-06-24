@@ -1,0 +1,67 @@
+[
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-06-23T17:13:45.791888Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0ba1v2k269_1781262649628429",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262649628429",
+    "url_or_document_id": "C0BA1V2K269__1781262649.628429"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-06-23T17:13:45.791888Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0ba1v2k269_1781262670462979",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262670462979",
+    "url_or_document_id": "C0BA1V2K269__1781262670.462979"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-06-23T17:13:45.791888Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0ba1v2k269_1781262686690199",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262686690199",
+    "url_or_document_id": "C0BA1V2K269__1781262686.690199"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-06-23T17:13:45.791888Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0ba1v2k269_1781262721847029",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262721847029",
+    "url_or_document_id": "C0BA1V2K269__1781262721.847029"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-06-23T17:13:45.791888Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+    "source_type": "slack",
+    "title": "Src Slack C0Ba1V2K269 1781262732047749",
+    "url_or_document_id": "C0BA1V2K269__1781262732.047749"
+  }
+]
