@@ -6,58 +6,61 @@ Draft review packet for `refund_eligibility`.
 
 ## Source Inventory
 
-Approved source bundle hash: `sha256:286b71392b7ef89e5707dc09358df5316dd2c0c6a3559a497d8f6eb5ef61c3c0`
+Approved source bundle hash: `sha256:750de57f788932a82623c3cbc9d10282ce98fb07e6524aea6a24e5063b0d4edb`
 
 ## Policy Claims
 
-- claim_1_test_001: Eligible when Customer received a skincare kit as a gift, experienced an allergic reaction to a listed ingredient, provides the gift receipt, and the original gifter declines to process the return. Agent locates the order via gift receipt, issues full store credit, captures the ingredient name, and flags it to the product team.
-- claim_2_test_002: Eligible when Customer received a skincare kit as a gift, experienced an allergic reaction, cannot produce a gift receipt but provides the gifter's email address. Agent locates the order via email, issues full store credit, records the allergen, and flags to the product team.
-- claim_3_test_003: Ineligible when Customer received a product as a gift and wants to return it because they simply do not like it. No health or safety concern is stated. Standard return policy applies: only original purchaser within 30-day window for unused/unopened items. Request is denied; no exception pathway is triggered.
-- claim_4_test_004: Escalate when Customer reports an allergic reaction to a gifted skincare product but cannot provide a gift receipt and does not know the gifter's name or email. Health/safety concern is credible but order cannot be located. Agent does not auto-deny; case is escalated to a human agent for manual resolution and the allergen is still flagged to the product team.
-- claim_5_test_005: Escalate when Customer reports an allergic reaction to a product received as a gift that was purchased during a Black Friday final-sale event. Gift receipt is available. Final-sale terms are non-overridable by the standard agent workflow, but the health/safety concern creates a policy conflict. Case is escalated to a human agent; allergen is flagged to the product team regardless of outcome.
-- claim_6_test_006: Ineligible when Customer is the original purchaser and requests a refund for a product purchased 4 months ago citing quality degradation. No health or safety concern is raised. Request falls outside the 30-day return window; no allergy exception pathway applies. Agent may offer escalation to a quality/defect review team as a separate pathway.
-- claim_7_test_007: Eligible when Customer received a food or skincare product as a gift and reports ingredient sensitivity (not a full allergic reaction but a documented health concern). Provides gifter's full name. Agent locates the order, applies the health/safety exception, issues full store credit, captures the ingredient identified, and flags to the product team.
+- claim_1_test_001: Eligible when Customer purchased an item 14 days ago. Item is unopened and unused. days_since_purchase=14, item_condition='unopened', usage_count=0. Should return full refund eligible per core policy rule.
+- claim_2_test_002: Ineligible when Customer purchased a coffee maker 10 days ago and has used it approximately 20 times but dislikes the output. days_since_purchase=10, item_condition='used', usage_count=20. Usage disqualifies refund regardless of recency or subjective dissatisfaction, matching src_slack_c0ba1v2k269_1781262709512969.
+- claim_3_test_003: Ineligible when Customer purchased a dress during a Black Friday final-sale event 5 days ago. Item is unworn but promotional terms at checkout marked all items non-refundable. promotional_flag=true, days_since_purchase=5, item_condition='unused'. Final-sale override applies, matching src_slack_c0ba1v2k269_1781262732047749.
+- claim_4_test_004: Escalate when Customer was charged $99 for an annual renewal 2 days ago. Account shows zero logins in 11 months. Policy does not guarantee renewal refunds; agent may offer 50% autonomously but full refund requires manager approval (~24hrs). Matches src_slack_c0ba1v2k269_1781262784193319.
+- claim_5_test_005: Escalate when Customer purchased an item 45 days ago and claims it is still completely unopened and unused. days_since_purchase=45, item_condition='unopened', usage_count=0. Outside the standard 30-day window; agent cannot auto-approve or auto-deny. Must escalate to manager for discretionary review.
+- claim_6_test_006: Eligible when Customer forgot to cancel a 7-day trial and was charged $49 exactly 1 day after trial expiry. Account shows no substantive usage during trial. Agent may issue one-time courtesy full refund and cancel subscription autonomously. Matches src_slack_c0ba1v2k269_1781262670462979.
+- claim_7_test_007: Ineligible when Customer purchased a blender 60 days ago and has used it regularly but now wants a refund due to performance issues. days_since_purchase=60, item_condition='used', usage_count=15. Fails both the 30-day rule and the unused-condition rule; categorically ineligible with no escalation path.
 
 ## Required Fields
 
-- order_or_gift_receipt
-- gifter_name_or_email
-- allergen_or_ingredient_identified
+- purchase_date
+- days_since_purchase
+- item_condition (unopened / unused / used)
+- usage_count or usage_evidence
+- order_id
+- promotional_flag (was item purchased during a final-sale event?)
 
 ## Edge Cases
 
-- Customer reports allergic reaction but item was a final-sale purchase — policy conflict requires human escalation, not auto-approval or auto-denial.
-- Customer provides gifter name but the name returns multiple orders — agent must request additional detail (e.g., approximate purchase date or item name) before issuing store credit.
-- Customer describes a severe medical reaction (anaphylaxis, hospitalization) — standard refund approval should still proceed, but a safety incident report must be opened in parallel.
-- Gifter is willing to process the return themselves — agent should offer both paths (gifter-initiated return or health/safety exception) and let the customer choose.
-- Customer cannot identify the specific allergen but describes a clear reaction — still eligible; capture symptoms and flag to product team even without a named ingredient.
-- Item is a perishable or consumable that has been fully used — health/safety exception still applies; do not apply the 'used item' ineligibility rule from standard policy when a health concern is documented.
-- Customer is also the original purchaser AND experienced an allergic reaction — no alternative verification needed; process as a standard health/safety return without invoking the gift-receipt pathway.
-- test_001: Gift recipient with allergic reaction and gift receipt provided -> pass
-- test_002: Gift recipient with allergic reaction and gifter email provided -> pass
-- test_003: Non-original purchaser with no health concern — preference return -> pass
-- test_004: Gift recipient with allergic reaction but zero alternative verification available -> pass
-- test_005: Allergic reaction on final-sale item with gift receipt provided -> pass
-- test_006: Original purchaser outside 30-day window with no health concern -> pass
-- test_007: Gift recipient with ingredient sensitivity (non-allergic) and gifter name provided -> pass
+- Item purchased as a gift: purchase_date may differ from recipient's receipt date; clarify which date governs the 30-day window before ruling.
+- Subscription renewals with partial usage (e.g., logged in once in 11 months): agent should not auto-approve full refund; escalate with usage evidence for manager discretion.
+- Customer claims item is unused but order history or packaging indicates otherwise: do not make autonomous eligibility determination; escalate for manual review.
+- Bundle purchases where one item is used and another is unopened: apply used-item rule to the bundle as a whole unless items can be individually returned and priced.
+- Item returned without original packaging but genuinely unused: condition classification is ambiguous; escalate rather than auto-approve or auto-deny.
+- Repeat courtesy refund requests: one-time courtesy exception must not be granted again to the same customer for a similar trial-billing scenario; check account history before issuing.
+- Final-sale item with a defect (not merely preference-based): defect claims may override final-sale terms under consumer protection standards; escalate to manager for legal review.
+- test_001: Unopened item within 30-day window -> pass
+- test_002: Used item within 30-day window -> pass
+- test_003: Final-sale promotional item, unused, within 30 days -> pass
+- test_004: Subscription renewal with zero account usage, charged 2 days ago -> pass
+- test_005: Unused item outside 30-day window -> pass
+- test_006: Trial billing courtesy refund within 1 day of trial end -> pass
+- test_007: Used item outside 30-day window -> pass
 
 ## Test Results
 
 Generated deterministic pilot tests are included under `tests/`.
 
-## Deterministic Verify Health Concern Obtain Alternative Proof Of Purchase Approve Full Store Credit Or Refund Install/Test Instructions
+## Deterministic If Days Since Purchase 30 And Condition Unopened Or Condition Unused Then Eligible If Usage Count 0 Then Ineligible Install/Test Instructions
 
-Runtime profile: `runtimes/deterministic_verify_health_concern_obtain_alternative_proof_of_purchase_approve_full_store_credit_or_refund.md`
+Runtime profile: `runtimes/deterministic_if_days_since_purchase_30_and_condition_unopened_or_condition_unused_then_eligible_if_usage_count_0_then_ineligible.md`
 
 Owner: `[redacted-email]`
 
 Install Instructions
 
-Deploy this skill under the refund_eligibility skill slug. Set the three required fields (order_or_gift_receipt, gifter_name_or_email, allergen_or_ingredient_identified) as prompted inputs at session start. Integrate a side-channel trigger to the product safety team that fires whenever allergen_or_ingredient_identified is populated, independent of the refund approval status. Ensure the final-sale flag from the order lookup is surfaced to the agent before auto-approval logic runs so that final-sale conflicts route to human escalation rather than auto-resolve.
+Deploy under the refund_eligibility skill. Attach to any conversation flow triggered by return or refund intent keywords. Requires read access to: order management system (purchase_date, promotional_flag, order_id), account usage logs (login_history, usage_count), and customer history (prior courtesy refund flags). Manager escalation routing must be configured with a ~24-hour SLA queue. Ensure final-sale promotional flags are populated at order ingestion time to support real-time lookup.
 
 Test Instructions
 
-To validate deployment: (1) Submit test_001 using a synthetic gift receipt — confirm store credit is issued and product team flag fires. (2) Submit test_003 with no health concern mentioned — confirm ineligible response and no exception pathway is triggered. (3) Submit test_004 with no verification details — confirm escalation routing fires and no auto-denial is returned. (4) Submit test_005 with a final-sale order number and a gift receipt — confirm escalation fires rather than auto-approval. (5) Verify that allergen flagging fires on all test cases where allergen_or_ingredient_identified is populated, even on ineligible or escalated outcomes.
+Before go-live, run all seven deterministic tests in test harness mode with mocked order and account data matching each test scenario. Verify: (1) test_001 returns eligible with full-refund confirmation message, (2) test_002 returns ineligible with usage-based denial message and no refund offer, (3) test_003 returns ineligible with final-sale policy citation, (4) test_004 triggers escalation flow with two-option prompt and manager routing, (5) test_005 triggers escalation without denial, (6) test_006 returns eligible with courtesy-refund message and exception logging, (7) test_007 returns ineligible with dual-rule failure noted. Confirm no test produces a refund offer when ineligible, and no test produces a hard denial when escalation is required.
 
 ## Runtime Lock
 
