@@ -1,0 +1,300 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-25T11:02:19.369803Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262697508679",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262697508679",
+      "url_or_document_id": "C0BA1V2K269__1781262697.508679"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-25T11:02:19.369803Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262709512969",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262709512969",
+      "url_or_document_id": "C0BA1V2K269__1781262709.512969"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-25T11:02:19.369803Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262732047749",
+      "url_or_document_id": "C0BA1V2K269__1781262732.047749"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-25T11:02:19.369803Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262772545439",
+      "url_or_document_id": "C0BA1V2K269__1781262772.545439"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-06-25T11:02:19.369803Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0ba1v2k269_1781262809670129",
+      "source_type": "slack",
+      "title": "Src Slack C0Ba1V2K269 1781262809670129",
+      "url_or_document_id": "C0BA1V2K269__1781262809.670129"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Eligible when Customer received a skincare kit as a gift, experienced an allergic reaction to a listed ingredient, provides the gift receipt, and the original gifter declines to process the return. Agent locates the order via gift receipt, issues full store credit, captures the ingredient name, and flags it to the product team."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Eligible when Customer received a skincare kit as a gift, experienced an allergic reaction, cannot produce a gift receipt but provides the gifter's email address. Agent locates the order via email, issues full store credit, records the allergen, and flags to the product team."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Ineligible when Customer received a product as a gift and wants to return it because they simply do not like it. No health or safety concern is stated. Standard return policy applies: only original purchaser within 30-day window for unused/unopened items. Request is denied; no exception pathway is triggered."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Escalate when Customer reports an allergic reaction to a gifted skincare product but cannot provide a gift receipt and does not know the gifter's name or email. Health/safety concern is credible but order cannot be located. Agent does not auto-deny; case is escalated to a human agent for manual resolution and the allergen is still flagged to the product team."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Escalate when Customer reports an allergic reaction to a product received as a gift that was purchased during a Black Friday final-sale event. Gift receipt is available. Final-sale terms are non-overridable by the standard agent workflow, but the health/safety concern creates a policy conflict. Case is escalated to a human agent; allergen is flagged to the product team regardless of outcome."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Ineligible when Customer is the original purchaser and requests a refund for a product purchased 4 months ago citing quality degradation. No health or safety concern is raised. Request falls outside the 30-day return window; no allergy exception pathway applies. Agent may offer escalation to a quality/defect review team as a separate pathway."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "id": "claim_7_test_007",
+      "text": "Eligible when Customer received a food or skincare product as a gift and reports ingredient sensitivity (not a full allergic reaction but a documented health concern). Provides gifter's full name. Agent locates the order, applies the health/safety exception, issues full store credit, captures the ingredient identified, and flags to the product team."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:07986e4da0fdba483093029229fe3cba8dc2e3414c4ecb718b2bd7ef406b8837",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "*[6/20 \u00b7 Ineligible]* I bought a pair of shoes back in February (Order #ORD-12398). They've started falling apart already. Can I get a refund? *Sent using* Claude I understand how frustrating that is! Unfortunately Order #ORD-12398 was placed 4 months ago, which is outside our 30-day return window, so I'm unable to process a refund. That said, if the shoes show signs of early manufacturing failure, I can escalate to our quality team for a review they sometimes make exceptions for defect cases. Would you like me to do that? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262697508679",
+      "synced_at": "2026-06-25T11:02:19.369803Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:bd530a49253e4d95aee35be1d51923fbf1b77073aa12e78552a22b9a4a57789d",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "*[7/20 \u00b7 Ineligible]* I'd like to return my coffee maker (Order #ORD-29104). I've used it about 20 times but I just don't like the coffee it produces. Can I get a refund? *Sent using* Claude Thanks for reaching out! Unfortunately we're unable to accept returns on items that have been used our policy covers unused, unopened items within 30 days of purchase. Since the coffee maker has been used regularly, it doesn't qualify for a refund. I'd be happy to share some brewing tips that many customers say make a big difference in taste. Would that help? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262709512969",
+      "synced_at": "2026-06-25T11:02:19.369803Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:270ebbb585895ca3c9b1f6b13cf82ec76a9d9514822baa6f61d77bceb941f7ac",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "*[9/20 \u00b7 Ineligible]* I bought a dress during your Black Friday sale (Order #ORD-67890). It doesn't fit well. Can I return it for a refund? *Sent using* Claude Sorry the fit isn't right! I can see Order #ORD-67890 was placed during our Black Friday promotion, which was marked as a final sale event all items from that sale are non-refundable and non-returnable per the promotional terms disclosed at checkout. Unfortunately I'm unable to make exceptions to the final sale policy. Happy to help you with sizing guidance for a future purchase if that's useful. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262732047749",
+      "synced_at": "2026-06-25T11:02:19.369803Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:e72b38f0e28d86f72f28ce4b36936b3a62c317b1702a1794cf737a705c6c0a15",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "*[12/20 \u00b7 Edge Case]* I received your skincare kit as a gift but I'm allergic to one of the ingredients. The person who gifted it doesn't want to ask for a refund themselves. Can I get store credit instead? *Sent using* Claude Health and safety concerns are something we take seriously allergic reactions are no small thing. While we normally need the original purchaser to process returns, we can work with you directly in cases like this. If you can provide the gift receipt, or the gifter's name/email just to locate the order, I can issue store credit for the full value. Which ingredient caused the reaction? I'd also like to flag it to our product team. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262772545439",
+      "synced_at": "2026-06-25T11:02:19.369803Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:0fcfc4d7a16c330abc2b923d90c2dba3bd08c4e0d3af9458bccc7d7026c58504",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "*[15/20 \u00b7 Edge Case]* I was charged $45 in customs fees for Order #ORD-88123 shipped to Canada. Your website said \"duties included\" at checkout this feels like false advertising. I want that $45 back. *Sent using* Claude You're absolutely right to flag this. If our site listed \"duties included\" at the time of purchase, we need to honor that. Could you share a screenshot of where you saw that messaging? Once confirmed, I'll refund the $45 in full and it also helps us fix the listing for future customers. I'll keep this case open while you gather that. *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262809670129",
+      "synced_at": "2026-06-25T11:02:19.369803Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:07986e4da0fdba483093029229fe3cba8dc2e3414c4ecb718b2bd7ef406b8837",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "*[6/20 \u00b7 Ineligible]* I bought a pair of shoes back in February (Order #ORD-12398). They've started falling apart already. Can I get a refund? *Sent using* Claude I understand how frustrating that is! Unfortunately Order #ORD-12398 was placed 4 months ago, which is outside our 30-day return window, so I'm unable to process a refund. That said, if the shoes show signs of early manufacturing failure, I can escalate to our quality team for a review they sometimes make exceptions for defect cases. Would you like me to do that? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262697508679",
+      "synced_at": "2026-06-25T11:02:19.369803Z"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "content_hash": "sha256:bd530a49253e4d95aee35be1d51923fbf1b77073aa12e78552a22b9a4a57789d",
+      "id": "evidence_7_test_007",
+      "retrieval_snippet": "*[7/20 \u00b7 Ineligible]* I'd like to return my coffee maker (Order #ORD-29104). I've used it about 20 times but I just don't like the coffee it produces. Can I get a refund? *Sent using* Claude Thanks for reaching out! Unfortunately we're unable to accept returns on items that have been used our policy covers unused, unopened items within 30 days of purchase. Since the coffee maker has been used regularly, it doesn't qualify for a refund. I'd be happy to share some brewing tips that many customers say make a big difference in taste. Would that help? *Sent using* Claude",
+      "source_id": "src_slack_c0ba1v2k269_1781262709512969",
+      "synced_at": "2026-06-25T11:02:19.369803Z"
+    }
+  ],
+  "generated_at": "2026-06-25T11:03:33.373590Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy this skill under the refund_eligibility skill slug. Set the three required fields (order_or_gift_receipt, gifter_name_or_email, allergen_or_ingredient_identified) as prompted inputs at session start. Integrate a side-channel trigger to the product safety team that fires whenever allergen_or_ingredient_identified is populated, independent of the refund approval status. Ensure the final-sale flag from the order lookup is surfaced to the agent before auto-approval logic runs so that final-sale conflicts route to human escalation rather than auto-resolve.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/deterministic_verify_health_concern_obtain_alternative_proof_of_purchase_approve_full_store_credit_or_refund.md",
+      "runtime": "deterministic_verify_health_concern_obtain_alternative_proof_of_purchase_approve_full_store_credit_or_refund",
+      "test_instructions": "To validate deployment: (1) Submit test_001 using a synthetic gift receipt \u2014 confirm store credit is issued and product team flag fires. (2) Submit test_003 with no health concern mentioned \u2014 confirm ineligible response and no exception pathway is triggered. (3) Submit test_004 with no verification details \u2014 confirm escalation routing fires and no auto-denial is returned. (4) Submit test_005 with a final-sale order number and a gift receipt \u2014 confirm escalation fires rather than auto-approval. (5) Verify that allergen flagging fires on all test cases where allergen_or_ingredient_identified is populated, even on ineligible or escalated outcomes."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "refund_eligibility",
+  "source_bundle_hash": "sha256:286b71392b7ef89e5707dc09358df5316dd2c0c6a3559a497d8f6eb5ef61c3c0",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_001",
+      "name": "Gift recipient with allergic reaction and gift receipt provided",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_002",
+      "name": "Gift recipient with allergic reaction and gifter email provided",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_003",
+      "name": "Non-original purchaser with no health concern \u2014 preference return",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_004",
+      "name": "Gift recipient with allergic reaction but zero alternative verification available",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_005",
+      "name": "Allergic reaction on final-sale item with gift receipt provided",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_006",
+      "name": "Original purchaser outside 30-day window with no health concern",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_007",
+      "name": "Gift recipient with ingredient sensitivity (non-allergic) and gifter name provided",
+      "status": "pass"
+    }
+  ]
+}
