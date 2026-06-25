@@ -1,17 +1,17 @@
 # Edge Cases
 
-- Customer reports allergic reaction but item was a final-sale purchase — policy conflict requires human escalation, not auto-approval or auto-denial.
-- Customer provides gifter name but the name returns multiple orders — agent must request additional detail (e.g., approximate purchase date or item name) before issuing store credit.
-- Customer describes a severe medical reaction (anaphylaxis, hospitalization) — standard refund approval should still proceed, but a safety incident report must be opened in parallel.
-- Gifter is willing to process the return themselves — agent should offer both paths (gifter-initiated return or health/safety exception) and let the customer choose.
-- Customer cannot identify the specific allergen but describes a clear reaction — still eligible; capture symptoms and flag to product team even without a named ingredient.
-- Item is a perishable or consumable that has been fully used — health/safety exception still applies; do not apply the 'used item' ineligibility rule from standard policy when a health concern is documented.
-- Customer is also the original purchaser AND experienced an allergic reaction — no alternative verification needed; process as a standard health/safety return without invoking the gift-receipt pathway.
+- Item purchased as a gift: purchase_date may differ from recipient's receipt date; clarify which date governs the 30-day window before ruling.
+- Subscription renewals with partial usage (e.g., logged in once in 11 months): agent should not auto-approve full refund; escalate with usage evidence for manager discretion.
+- Customer claims item is unused but order history or packaging indicates otherwise: do not make autonomous eligibility determination; escalate for manual review.
+- Bundle purchases where one item is used and another is unopened: apply used-item rule to the bundle as a whole unless items can be individually returned and priced.
+- Item returned without original packaging but genuinely unused: condition classification is ambiguous; escalate rather than auto-approve or auto-deny.
+- Repeat courtesy refund requests: one-time courtesy exception must not be granted again to the same customer for a similar trial-billing scenario; check account history before issuing.
+- Final-sale item with a defect (not merely preference-based): defect claims may override final-sale terms under consumer protection standards; escalate to manager for legal review.
 
-- `Gift recipient with allergic reaction and gift receipt provided` -> `eligible`
-- `Gift recipient with allergic reaction and gifter email provided` -> `eligible`
-- `Non-original purchaser with no health concern — preference return` -> `ineligible`
-- `Gift recipient with allergic reaction but zero alternative verification available` -> `needs_escalation`
-- `Allergic reaction on final-sale item with gift receipt provided` -> `needs_escalation`
-- `Original purchaser outside 30-day window with no health concern` -> `ineligible`
-- `Gift recipient with ingredient sensitivity (non-allergic) and gifter name provided` -> `eligible`
+- `Unopened item within 30-day window` -> `eligible`
+- `Used item within 30-day window` -> `ineligible`
+- `Final-sale promotional item, unused, within 30 days` -> `ineligible`
+- `Subscription renewal with zero account usage, charged 2 days ago` -> `needs_escalation`
+- `Unused item outside 30-day window` -> `needs_escalation`
+- `Trial billing courtesy refund within 1 day of trial end` -> `eligible`
+- `Used item outside 30-day window` -> `ineligible`
