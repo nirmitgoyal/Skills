@@ -1,27 +1,30 @@
 # refund_eligibility
 
-Allow non-original purchasers to receive store credit or a full refund when a documented health or safety concern (e.g., allergic reaction, ingredient sensitivity) is present, bypassing the standard proof-of-purchase requirement. Accept a gift receipt OR the gifter's name/email as alternative order-location verification. Capture the specific allergen or ingredient identified and flag it to the product team. This pathway is explicitly supported for gift recipients who cannot obtain a return from the original purchaser.
+Issue a full one-time courtesy refund when a subscription charge occurs within 24 hours after the customer's trial period ends, indicating a missed cancellation deadline. Cancel the subscription immediately and revert the account to the free plan. Refund is strictly one-time; renewals, charges beyond the 24-hour window, or prior courtesy refunds on the same account do not qualify under this policy and require escalation.
 
 ## Decision Rules
 
-- ELIGIBLE if: customer is a non-original purchaser AND reports a health/safety concern (allergic reaction or ingredient sensitivity) AND provides at least one of: (a) gift receipt, or (b) gifter name or gifter email sufficient to locate the order.
-- ELIGIBLE outcome is full store credit for the item value; a full refund may be issued if order can be fully located and verified.
-- INELIGIBLE if: no health or safety concern is stated — standard return policy applies (unused/unopened within 30 days, original purchaser only).
-- INELIGIBLE if: item was purchased under a final-sale or promotional event — final-sale terms are non-overridable even under this pathway.
-- INELIGIBLE if: customer cannot provide any alternative verification (neither gift receipt nor gifter name/email) — escalate rather than deny outright.
-- INELIGIBLE if: the return window concern is purely preference-based (dislike of product, fit, or performance) with no health/safety claim.
-- Always capture the specific allergen or ingredient identified and flag it internally to the product team regardless of refund outcome.
-- Do not require the original purchaser to initiate the return when a valid health/safety concern and alternative verification are both present.
+- Confirm the trial end date from system records before accepting any customer-stated date.
+- Calculate the exact elapsed time between trial_end_date and charge_date; the charge must have occurred within 24 hours (≤24 hours) post-trial to be eligible.
+- Verify this is the customer's first courtesy refund on the account; deny if a prior courtesy refund has already been issued under this policy.
+- The refund must equal the full charge_amount—no partial refunds under this policy.
+- Cancel the subscription immediately upon issuing the refund and revert the account to the free plan.
+- Inform the customer that the refund will appear in 3–5 business days.
+- If the charge is for an annual renewal (not a trial-to-paid conversion), do not apply this policy; treat as an edge case requiring escalation.
+- If the charge occurred more than 24 hours after trial end, escalate to a manager rather than issuing an autonomous refund.
+- Do not use customer-provided dates as the sole verification source; always cross-reference system records.
 
 ## Required Fields
 
-- order_or_gift_receipt
-- gifter_name_or_email
-- allergen_or_ingredient_identified
+- trial_end_date
+- charge_date
+- charge_amount
+- subscription_plan_name
 
 ## Escalation
 
-- Escalate to product/safety team whenever an allergen or ingredient is identified, even if the refund is approved — this is a mandatory parallel action.
-- Escalate to a human agent if no alternative verification (gift receipt or gifter name/email) can be obtained but health/safety concern is credible — do not auto-deny.
-- Escalate if the item in question was part of a final-sale promotion and a health/safety concern is raised — policy conflict requires human review.
-- Escalate if the customer describes a severe reaction (e.g., anaphylaxis, medical treatment required) — may require safety incident documentation beyond standard refund workflow.
+- Escalate to manager if charge occurred more than 24 hours after trial end date; autonomous refund authority does not extend beyond the 24-hour window.
+- Escalate if the customer has already received a prior courtesy refund under this policy on the same account.
+- Escalate annual or multi-month renewal charges that are not trial-to-paid conversions; those require separate manager-approved handling (up to full refund with account termination per evidence).
+- Escalate if system records cannot confirm trial end date or charge date, preventing reliable window calculation.
+- Escalate if the charge amount does not match the stated subscription plan pricing on record.
