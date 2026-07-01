@@ -38,6 +38,9 @@ jobs:
           test -f refund_eligibility/REVIEW.md
           test -d refund_eligibility/tests
           test -d refund_eligibility/runtimes
+          test -d refund_eligibility/scripts
+          test -f refund_eligibility/scripts/manifest.json
+          test -f refund_eligibility/scripts/manifest.sha256 || echo "no codegen sidecar (placeholder packet)"
 
       - name: Validate trust-packet contract
         run: |
@@ -330,3 +333,45 @@ jobs:
       - name: Run deterministic generated tests
         run: |
           python -m pytest refund_eligibility/tests
+
+      - name: Verify capability integrity and source hygiene (no execution)
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import sys
+
+          slug = "refund_eligibility"
+          scripts = pathlib.Path(slug) / "scripts"
+          # HR-8: ASCII-only + byte-size cap over every published script.
+          MAX_SCRIPT_BYTES = 3000
+          for py in sorted(scripts.glob("*.py")):
+              data = py.read_bytes()
+              if len(data) > MAX_SCRIPT_BYTES:
+                  print(f"script too large: {py}", file=sys.stderr)
+                  sys.exit(1)
+              try:
+                  data.decode("ascii")
+              except UnicodeDecodeError:
+                  print(f"non-ascii script: {py}", file=sys.stderr)
+                  sys.exit(1)
+          # Integrity: codegen packets ship scripts/manifest.sha256 binding the
+          # script + manifest bytes. The server-side scan is authoritative; CI
+          # only corroborates that published bytes match the recorded digests.
+          sidecar = scripts / "manifest.sha256"
+          if sidecar.is_file():
+              recorded = json.loads(sidecar.read_text(encoding="utf-8"))
+              for rel, want in recorded.items():
+                  got = hashlib.sha256(
+                      (pathlib.Path(slug) / rel).read_bytes()
+                  ).hexdigest()
+                  if got != want:
+                      print(f"integrity mismatch: {rel}", file=sys.stderr)
+                      sys.exit(1)
+          print("capability integrity + hygiene OK")
+          PY
+
+      - name: Compile generated scripts (no execution)
+        run: |
+          python -m py_compile refund_eligibility/scripts/*.py
