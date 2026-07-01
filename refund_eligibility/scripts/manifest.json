@@ -1,0 +1,6 @@
+{
+  "description": "Inert placeholder capability manifest; runtime is not yet implemented.",
+  "entrypoint": "scripts/skill.py",
+  "manifest_version": "capability_manifest.v1",
+  "runtime": "deterministic_verify_screenshot_against_checkout_archive_if_match_found_full_refund_approved_with_listing_correction_flag_to_product_team"
+}
