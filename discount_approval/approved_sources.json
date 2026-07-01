@@ -1,0 +1,80 @@
+[
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-07-01T16:15:35.926823Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0b61lnfk7w_1779688151379049",
+    "source_type": "slack",
+    "title": "Src Slack C0B61Lnfk7W 1779688151379049",
+    "url_or_document_id": "C0B61LNFK7W__1779688151.379049"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-07-01T16:15:35.926823Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0b61lnfk7w_1779688177061639",
+    "source_type": "slack",
+    "title": "Src Slack C0B61Lnfk7W 1779688177061639",
+    "url_or_document_id": "C0B61LNFK7W__1779688177.061639"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-07-01T16:15:35.926823Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0b61lnfk7w_1779688184535069",
+    "source_type": "slack",
+    "title": "Src Slack C0B61Lnfk7W 1779688184535069",
+    "url_or_document_id": "C0B61LNFK7W__1779688184.535069"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-07-01T16:15:35.926823Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0b61lnfk7w_1779688189759379",
+    "source_type": "slack",
+    "title": "Src Slack C0B61Lnfk7W 1779688189759379",
+    "url_or_document_id": "C0B61LNFK7W__1779688189.759379"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-07-01T16:15:35.926823Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0b61lnfk7w_1779688194266099",
+    "source_type": "slack",
+    "title": "Src Slack C0B61Lnfk7W 1779688194266099",
+    "url_or_document_id": "C0B61LNFK7W__1779688194.266099"
+  },
+  {
+    "allowed_data_points": [
+      "approved_excerpt"
+    ],
+    "allowed_scope": "approved_excerpt",
+    "approved_at": "2026-07-01T16:15:35.926823Z",
+    "approved_by": "nirmit@skilllayer.tech",
+    "connector_or_import_source": "slack",
+    "source_id": "src_slack_c0b61lnfk7w_1779701501116789",
+    "source_type": "slack",
+    "title": "Src Slack C0B61Lnfk7W 1779701501116789",
+    "url_or_document_id": "C0B61LNFK7W__1779701501.116789"
+  }
+]
