@@ -1,17 +1,16 @@
 # Edge Cases
 
-- Customer reports allergic reaction but item was a final-sale purchase — policy conflict requires human escalation, not auto-approval or auto-denial.
-- Customer provides gifter name but the name returns multiple orders — agent must request additional detail (e.g., approximate purchase date or item name) before issuing store credit.
-- Customer describes a severe medical reaction (anaphylaxis, hospitalization) — standard refund approval should still proceed, but a safety incident report must be opened in parallel.
-- Gifter is willing to process the return themselves — agent should offer both paths (gifter-initiated return or health/safety exception) and let the customer choose.
-- Customer cannot identify the specific allergen but describes a clear reaction — still eligible; capture symptoms and flag to product team even without a named ingredient.
-- Item is a perishable or consumable that has been fully used — health/safety exception still applies; do not apply the 'used item' ineligibility rule from standard policy when a health concern is documented.
-- Customer is also the original purchaser AND experienced an allergic reaction — no alternative verification needed; process as a standard health/safety return without invoking the gift-receipt pathway.
+- Customer submits a screenshot but it is cropped or low-resolution — request a clearer image before proceeding; do not deny outright.
+- The checkout archive itself is ambiguous (e.g., A/B test variant shown to some customers) — escalate for product team to confirm which variant was served to this customer's session.
+- Customer was charged duties by their national customs authority rather than by the merchant — clarify that a refund covers only merchant-controlled duties fees; third-party government fees may not be refundable and require escalation.
+- Multiple orders with duties charges from the same customer in a short period — flag for pattern review to trust-and-safety before approving any individual refund.
+- Customer already received a partial refund for the same duties charge from a previous interaction — deduct prior refunded amount from the approved refund to avoid double-payment.
+- Destination country charges are split between duties and VAT/GST — only the duties portion covered by 'duties included' promise is refundable; tax components are handled separately.
 
-- `Gift recipient with allergic reaction and gift receipt provided` -> `eligible`
-- `Gift recipient with allergic reaction and gifter email provided` -> `eligible`
-- `Non-original purchaser with no health concern — preference return` -> `ineligible`
-- `Gift recipient with allergic reaction but zero alternative verification available` -> `needs_escalation`
-- `Allergic reaction on final-sale item with gift receipt provided` -> `needs_escalation`
-- `Original purchaser outside 30-day window with no health concern` -> `ineligible`
-- `Gift recipient with ingredient sensitivity (non-allergic) and gifter name provided` -> `eligible`
+- `Matching screenshot and archive — full refund approved` -> `eligible`
+- `No screenshot and no archive record — ineligible` -> `ineligible`
+- `Screenshot provided but archive record cannot be located — escalation required` -> `needs_escalation`
+- `Chargeback threat with pending duties dispute — immediate escalation` -> `needs_escalation`
+- `Screenshot shows generic free shipping, not duties coverage — ineligible` -> `ineligible`
+- `Archive confirms duties promise; listing was corrected before order date — ineligible` -> `ineligible`
+- `Screenshot matches archive, duties amount over $200 — escalation for manager approval` -> `needs_escalation`
