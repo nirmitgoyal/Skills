@@ -1,0 +1,313 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:15:35.926823Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0b61lnfk7w_1779688151379049",
+      "source_type": "slack",
+      "title": "Src Slack C0B61Lnfk7W 1779688151379049",
+      "url_or_document_id": "C0B61LNFK7W__1779688151.379049"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:15:35.926823Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0b61lnfk7w_1779688177061639",
+      "source_type": "slack",
+      "title": "Src Slack C0B61Lnfk7W 1779688177061639",
+      "url_or_document_id": "C0B61LNFK7W__1779688177.061639"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:15:35.926823Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0b61lnfk7w_1779688184535069",
+      "source_type": "slack",
+      "title": "Src Slack C0B61Lnfk7W 1779688184535069",
+      "url_or_document_id": "C0B61LNFK7W__1779688184.535069"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:15:35.926823Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0b61lnfk7w_1779688189759379",
+      "source_type": "slack",
+      "title": "Src Slack C0B61Lnfk7W 1779688189759379",
+      "url_or_document_id": "C0B61LNFK7W__1779688189.759379"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:15:35.926823Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0b61lnfk7w_1779688194266099",
+      "source_type": "slack",
+      "title": "Src Slack C0B61Lnfk7W 1779688194266099",
+      "url_or_document_id": "C0B61LNFK7W__1779688194.266099"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:15:35.926823Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0b61lnfk7w_1779701501116789",
+      "source_type": "slack",
+      "title": "Src Slack C0B61Lnfk7W 1779701501116789",
+      "url_or_document_id": "C0B61LNFK7W__1779701501.116789"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Eligible when Customer is a qualified SMB prospect (fits target profile), has an active opportunity in the CRM, and sales notes document budget as the primary reason for delay. All three criteria are satisfied; approve the 10% discount."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Eligible when Account is flagged as renewal-risk (fits target profile), renewal is actively in progress, and a documented email from the customer cites price as the primary blocker. All three criteria are met; approve the 10% discount."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Ineligible when Customer does not fit the target profile (classified as low-fit lead). Although an active opportunity exists and budget is cited as a blocker, the profile criterion fails. Deny the discount and keep on standard pricing."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Ineligible when Customer fits the target profile and has an active renewal, but the account is classified as a healthy renewal with no documented price or budget objection. The third criterion is not met. Deny the discount per policy against discounting healthy demand."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Ineligible when Customer fits the target profile and has documented budget concerns, but there is no active opportunity or renewal found in the CRM. The second criterion fails. Deny the discount; no blanket discounts for all prospects."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Escalate when The submitting rep cannot confirm whether the customer fits the target profile. Active opportunity exists and budget is documented as a blocker, but profile fit is unverified. Escalate for human review before any discount is issued."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "id": "claim_7_test_007",
+      "text": "Escalate when Customer fits the target profile and has an active opportunity, but the only evidence of a budget blocker is a verbal statement with no written record in CRM, email, or call notes. Escalate to confirm documentation before approving."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:ce82e6457953f6332122532a4db117ef1aed4e42301de020d179d6d00e62d501",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "Starting a short discussion here on which customer segment should receive the 10% discount. *Sent using* ChatGPT",
+      "source_id": "src_slack_c0b61lnfk7w_1779688151379049",
+      "synced_at": "2026-07-01T16:15:35.926823Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:51b4ab84e7c07bc5d7e7b4b076ff54d9a1a4cd520eb08cf7a383c78c079ac9b7",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "*Slack bot note:* Suggested discount segment: customers who are high-intent but price-sensitive, especially qualified SMB prospects or renewal-risk accounts where a 10% discount can unblock conversion without broadly discounting healthy demand. *Sent using* ChatGPT",
+      "source_id": "src_slack_c0b61lnfk7w_1779688177061639",
+      "synced_at": "2026-07-01T16:15:35.926823Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:d9f6427cb37f6a4ded1b3f25d20f95c445180047f3080ad449849a23b5d89563",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "*Nirmitt:* I agree. Lets keep the 10% discount targeted, not blanket. My vote is: offer it only to qualified customers who show clear buying intent but cite budget as the blocker. *Sent using* ChatGPT",
+      "source_id": "src_slack_c0b61lnfk7w_1779688184535069",
+      "synced_at": "2026-07-01T16:15:35.926823Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:6c76459773b10c35a77b06317182aed4a1bf964feeaf568df87cc12b2626e195",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "*Slack bot note:* Proposed rule: apply the 10% discount to customers who meet all three criteria: Fit the target customer profile Have an active opportunity or renewal in progress Have price/budget documented as the primary blocker Customers outside that segment should stay on standard pricing. *Sent using* ChatGPT",
+      "source_id": "src_slack_c0b61lnfk7w_1779688189759379",
+      "synced_at": "2026-07-01T16:15:35.926823Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:c5cc032d7d13f1d56d3a5acd8fedffd751a1c4bcb9239980eb703be0226411a8",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "*Nirmitt:* Decision for now: 10% discount goes to qualified, high-intent customers where budget is the blocker. No automatic discount for all prospects, existing healthy renewals, or low-fit leads. *Sent using* ChatGPT",
+      "source_id": "src_slack_c0b61lnfk7w_1779688194266099",
+      "synced_at": "2026-07-01T16:15:35.926823Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:bceb00a9e0e12caff8066b7dcc77982fea6d3228df791cfe7997df212d762f20",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "Suggested discount segment: customers who are high-intent but price-sensitive, especially qualified SMB prospects or renewal-risk accounts where a 10% discount can unblock conversion without broadly discounting healthy demand. I agree. Lets keep the 10% discount targeted, not blanket. My vote is: offer it only to qualified customers who show clear buying intent but cite budget as the blocker. Proposed rule: apply the 10% discount to customers who meet all three criteria: Fit the target customer profile Have an active opportunity or renewal in progress Have price/budget documented as the primary blocker Customers outside that segment should stay on standard pricing. Decision for now: 10% discount goes to qualified, high-intent customers where budget is the blocker. No automatic discount for all prospects, existing healthy renewals, or low-fit leads.",
+      "source_id": "src_slack_c0b61lnfk7w_1779701501116789",
+      "synced_at": "2026-07-01T16:15:35.926823Z"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "content_hash": "sha256:ce82e6457953f6332122532a4db117ef1aed4e42301de020d179d6d00e62d501",
+      "id": "evidence_7_test_007",
+      "retrieval_snippet": "Starting a short discussion here on which customer segment should receive the 10% discount. *Sent using* ChatGPT",
+      "source_id": "src_slack_c0b61lnfk7w_1779688151379049",
+      "synced_at": "2026-07-01T16:15:35.926823Z"
+    }
+  ],
+  "generated_at": "2026-07-01T16:22:47.064316Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "Deploy this skill as a rule-based evaluation node triggered when a discount request or price-match inquiry is submitted. Attach required input fields (customer_profile_classification, active_opportunity_or_renewal_status, primary_blocker_documentation) to the intake form or CRM workflow. The skill must receive all three fields as structured inputs before evaluation begins. Connect ELIGIBLE output to discount approval workflow, INELIGIBLE output to standard pricing confirmation message, and NEEDS_ESCALATION output to a human review queue. Do not enable auto-approval modes. Ensure audit logging captures the values of all three criteria for each decision.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/rule_based_check_approve_if_all_three_criteria_met_deny_otherwise_no_automatic_discounts_for_all_prospects_healthy_renewals_or_low_fit_leads.md",
+      "runtime": "rule_based_check_approve_if_all_three_criteria_met_deny_otherwise_no_automatic_discounts_for_all_prospects_healthy_renewals_or_low_fit_leads",
+      "test_instructions": "To verify correct behavior after deployment: (1) Submit test_001 inputs and confirm ELIGIBLE response with 10% discount approval. (2) Submit test_003 inputs and confirm INELIGIBLE response with standard pricing message. (3) Submit test_006 inputs and confirm NEEDS_ESCALATION response with 'customer_profile_classification unverified' noted. (4) Submit a request with all fields empty and confirm the system requests required inputs rather than defaulting to any outcome. (5) Submit a request with a 15% discount ask matching otherwise eligible criteria and confirm escalation is triggered. Review audit logs after each test to confirm all three criterion values are recorded."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "discount_approval",
+  "source_bundle_hash": "sha256:eec9827cb271f035310bb849d924f8c75b8bf1b7d7fb0c13678857e7b4a92ef6",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_001",
+      "name": "All three criteria met \u2014 qualified SMB with active opportunity and documented budget blocker",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_002",
+      "name": "Renewal-risk account with documented budget blocker and active renewal",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_003",
+      "name": "Low-fit lead citing budget concerns with active opportunity",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_004",
+      "name": "Healthy renewal account \u2014 no budget blocker documented",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_005",
+      "name": "Qualified prospect with budget blocker but no active opportunity or renewal on record",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_006",
+      "name": "Ambiguous profile classification \u2014 rep unsure if customer fits target segment",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_007",
+      "name": "Verbal budget blocker claim only \u2014 no written documentation provided",
+      "status": "pass"
+    }
+  ]
+}
