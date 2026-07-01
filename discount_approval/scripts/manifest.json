@@ -1,0 +1,6 @@
+{
+  "description": "Inert placeholder capability manifest; runtime is not yet implemented.",
+  "entrypoint": "scripts/skill.py",
+  "manifest_version": "capability_manifest.v1",
+  "runtime": "rule_based_check_approve_if_all_three_criteria_met_deny_otherwise_no_automatic_discounts_for_all_prospects_healthy_renewals_or_low_fit_leads"
+}
