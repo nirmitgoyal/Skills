@@ -6,58 +6,59 @@ Draft review packet for `refund_eligibility`.
 
 ## Source Inventory
 
-Approved source bundle hash: `sha256:286b71392b7ef89e5707dc09358df5316dd2c0c6a3559a497d8f6eb5ef61c3c0`
+Approved source bundle hash: `sha256:d8401dda43f3be7d403843340d8ed9f0be8c2b1705b5cc38d2be9c6ff45ea79e`
 
 ## Policy Claims
 
-- claim_1_test_001: Eligible when Customer received a skincare kit as a gift, experienced an allergic reaction to a listed ingredient, provides the gift receipt, and the original gifter declines to process the return. Agent locates the order via gift receipt, issues full store credit, captures the ingredient name, and flags it to the product team.
-- claim_2_test_002: Eligible when Customer received a skincare kit as a gift, experienced an allergic reaction, cannot produce a gift receipt but provides the gifter's email address. Agent locates the order via email, issues full store credit, records the allergen, and flags to the product team.
-- claim_3_test_003: Ineligible when Customer received a product as a gift and wants to return it because they simply do not like it. No health or safety concern is stated. Standard return policy applies: only original purchaser within 30-day window for unused/unopened items. Request is denied; no exception pathway is triggered.
-- claim_4_test_004: Escalate when Customer reports an allergic reaction to a gifted skincare product but cannot provide a gift receipt and does not know the gifter's name or email. Health/safety concern is credible but order cannot be located. Agent does not auto-deny; case is escalated to a human agent for manual resolution and the allergen is still flagged to the product team.
-- claim_5_test_005: Escalate when Customer reports an allergic reaction to a product received as a gift that was purchased during a Black Friday final-sale event. Gift receipt is available. Final-sale terms are non-overridable by the standard agent workflow, but the health/safety concern creates a policy conflict. Case is escalated to a human agent; allergen is flagged to the product team regardless of outcome.
-- claim_6_test_006: Ineligible when Customer is the original purchaser and requests a refund for a product purchased 4 months ago citing quality degradation. No health or safety concern is raised. Request falls outside the 30-day return window; no allergy exception pathway applies. Agent may offer escalation to a quality/defect review team as a separate pathway.
-- claim_7_test_007: Eligible when Customer received a food or skincare product as a gift and reports ingredient sensitivity (not a full allergic reaction but a documented health concern). Provides gifter's full name. Agent locates the order, applies the health/safety exception, issues full store credit, captures the ingredient identified, and flags to the product team.
+- claim_1_test_001: Eligible when Customer submits Order #ORD-88123, $45 customs charge, destination Canada, with a screenshot showing 'duties included' at checkout. Archive record for that SKU and region on the order date confirms the same messaging. Agent verifies match and issues full $45 refund, flags listing to product team. Directly backed by src_slack_c0ba1v2k269_1781262809670129.
+- claim_2_test_002: Ineligible when Customer claims duties were promised but provides no screenshot. Checkout archive contains no 'duties included' messaging for the relevant SKU, destination, and order date. No basis to approve refund; agent closes with explanation and instructs customer that proof is required.
+- claim_3_test_003: Escalate when Customer provides a screenshot appearing to show 'duties included'. However, the checkout archive has a data gap for the relevant date range and the record cannot be confirmed or denied. Agent cannot make a deterministic decision and must escalate to senior agent with all collected evidence within 4 business hours.
+- claim_4_test_004: Escalate when Customer reports $78 customs charge and states they are filing a chargeback today if not resolved immediately. Even if a screenshot is available, the chargeback threat triggers immediate escalation to senior payments team per the urgency protocol established in src_slack_c0ba1v2k269_1781262823049209. Regular refund approval flow is suspended pending escalation outcome.
+- claim_5_test_005: Ineligible when Customer submits a screenshot of checkout messaging reading 'Free Shipping on this order' with no reference to duties or customs. The messaging does not constitute a promise to cover duties. Refund is denied; agent explains the distinction between shipping cost coverage and duties coverage.
+- claim_6_test_006: Ineligible when Customer claims duties were promised. Archive confirms the listing carried 'duties included' language historically, but a product team correction log shows the messaging was removed two days before the customer's order timestamp. The promise was not active at time of purchase. Refund is denied and agent explains the timeline.
+- claim_7_test_007: Escalate when Customer reports $230 customs charge on a bulk order. Screenshot and archive both confirm 'duties included' messaging. Because the amount exceeds the $200 threshold, the agent cannot self-approve and must escalate to a manager. Case is held open pending manager authorization before refund is issued.
 
 ## Required Fields
 
-- order_or_gift_receipt
-- gifter_name_or_email
-- allergen_or_ingredient_identified
+- order_id
+- charged_amount
+- customer_screenshot_of_checkout_messaging
+- order_timestamp
+- destination_country
 
 ## Edge Cases
 
-- Customer reports allergic reaction but item was a final-sale purchase — policy conflict requires human escalation, not auto-approval or auto-denial.
-- Customer provides gifter name but the name returns multiple orders — agent must request additional detail (e.g., approximate purchase date or item name) before issuing store credit.
-- Customer describes a severe medical reaction (anaphylaxis, hospitalization) — standard refund approval should still proceed, but a safety incident report must be opened in parallel.
-- Gifter is willing to process the return themselves — agent should offer both paths (gifter-initiated return or health/safety exception) and let the customer choose.
-- Customer cannot identify the specific allergen but describes a clear reaction — still eligible; capture symptoms and flag to product team even without a named ingredient.
-- Item is a perishable or consumable that has been fully used — health/safety exception still applies; do not apply the 'used item' ineligibility rule from standard policy when a health concern is documented.
-- Customer is also the original purchaser AND experienced an allergic reaction — no alternative verification needed; process as a standard health/safety return without invoking the gift-receipt pathway.
-- test_001: Gift recipient with allergic reaction and gift receipt provided -> pass
-- test_002: Gift recipient with allergic reaction and gifter email provided -> pass
-- test_003: Non-original purchaser with no health concern — preference return -> pass
-- test_004: Gift recipient with allergic reaction but zero alternative verification available -> pass
-- test_005: Allergic reaction on final-sale item with gift receipt provided -> pass
-- test_006: Original purchaser outside 30-day window with no health concern -> pass
-- test_007: Gift recipient with ingredient sensitivity (non-allergic) and gifter name provided -> pass
+- Customer submits a screenshot but it is cropped or low-resolution — request a clearer image before proceeding; do not deny outright.
+- The checkout archive itself is ambiguous (e.g., A/B test variant shown to some customers) — escalate for product team to confirm which variant was served to this customer's session.
+- Customer was charged duties by their national customs authority rather than by the merchant — clarify that a refund covers only merchant-controlled duties fees; third-party government fees may not be refundable and require escalation.
+- Multiple orders with duties charges from the same customer in a short period — flag for pattern review to trust-and-safety before approving any individual refund.
+- Customer already received a partial refund for the same duties charge from a previous interaction — deduct prior refunded amount from the approved refund to avoid double-payment.
+- Destination country charges are split between duties and VAT/GST — only the duties portion covered by 'duties included' promise is refundable; tax components are handled separately.
+- test_001: Matching screenshot and archive — full refund approved -> pass
+- test_002: No screenshot and no archive record — ineligible -> pass
+- test_003: Screenshot provided but archive record cannot be located — escalation required -> pass
+- test_004: Chargeback threat with pending duties dispute — immediate escalation -> pass
+- test_005: Screenshot shows generic free shipping, not duties coverage — ineligible -> pass
+- test_006: Archive confirms duties promise; listing was corrected before order date — ineligible -> pass
+- test_007: Screenshot matches archive, duties amount over $200 — escalation for manager approval -> pass
 
 ## Test Results
 
 Generated deterministic pilot tests are included under `tests/`.
 
-## Deterministic Verify Health Concern Obtain Alternative Proof Of Purchase Approve Full Store Credit Or Refund Install/Test Instructions
+## Deterministic Verify Screenshot Against Checkout Archive If Match Found Full Refund Approved With Listing Correction Flag To Product Team Install/Test Instructions
 
-Runtime profile: `runtimes/deterministic_verify_health_concern_obtain_alternative_proof_of_purchase_approve_full_store_credit_or_refund.md`
+Runtime profile: `runtimes/deterministic_verify_screenshot_against_checkout_archive_if_match_found_full_refund_approved_with_listing_correction_flag_to_product_team.md`
 
 Owner: `[redacted-email]`
 
 Install Instructions
 
-Deploy this skill under the refund_eligibility skill slug. Set the three required fields (order_or_gift_receipt, gifter_name_or_email, allergen_or_ingredient_identified) as prompted inputs at session start. Integrate a side-channel trigger to the product safety team that fires whenever allergen_or_ingredient_identified is populated, independent of the refund approval status. Ensure the final-sale flag from the order lookup is surfaced to the agent before auto-approval logic runs so that final-sale conflicts route to human escalation rather than auto-resolve.
+1. Deploy this skill under the slug 'refund_eligibility' in the agent routing layer. 2. Connect the checkout_archive_lookup tool to the archive database, scoped to read-only access on the checkout messaging history table, indexed by SKU, destination_country, and order_timestamp. 3. Connect the refund_issuance tool with write permissions limited to the charged_amount field; cap single-agent approval at $200 and require manager_approval_token for amounts above. 4. Connect the listing_correction_flag tool with write access to the product team's issue tracker; ensure flags include SKU, destination_country, and order_timestamp fields. 5. Configure the escalation routing rule to forward cases tagged NEEDS_ESCALATION to the senior_payments_queue with all collected evidence attached. 6. Set case-hold timeout to 72 hours for screenshot-pending cases; auto-close with denial notice if no screenshot is received within that window. 7. Enable audit logging on all archive lookups and refund approvals for compliance traceability.
 
 Test Instructions
 
-To validate deployment: (1) Submit test_001 using a synthetic gift receipt — confirm store credit is issued and product team flag fires. (2) Submit test_003 with no health concern mentioned — confirm ineligible response and no exception pathway is triggered. (3) Submit test_004 with no verification details — confirm escalation routing fires and no auto-denial is returned. (4) Submit test_005 with a final-sale order number and a gift receipt — confirm escalation fires rather than auto-approval. (5) Verify that allergen flagging fires on all test cases where allergen_or_ingredient_identified is populated, even on ineligible or escalated outcomes.
+1. Seed the checkout archive with a test record for SKU 'TEST-SKU-001', destination 'CA', date '2024-06-15', messaging 'Duties Included'. 2. Run test_001: submit order_id='ORD-TEST-001', charged_amount=45, order_timestamp='2024-06-15T10:00:00Z', destination_country='CA', with a matching screenshot; confirm the system returns an eligible decision, issues a $45 refund, and creates a listing-correction flag. 3. Run test_002: submit the same order details with no screenshot and no archive record; confirm the system returns an ineligible decision with no refund action taken. 4. Run test_003: submit an order_timestamp falling in a date range where the archive has a known data gap; confirm the system routes to the senior_payments_queue escalation path. 5. Run test_004: include the phrase 'I am filing a chargeback' in the customer message; confirm the system immediately escalates regardless of screenshot or archive status. 6. Run test_007: set charged_amount=230 with a confirmed archive match; confirm the system blocks self-approval and requires a manager_approval_token before the refund is issued. 7. After each eligible test, verify the listing_correction_flag tool was called exactly once with the correct SKU, destination_country, and order_timestamp. 8. Verify that no test produces a refund without a corresponding audit log entry.
 
 ## Runtime Lock
 
