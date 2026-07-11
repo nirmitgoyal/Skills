@@ -30,17 +30,17 @@ jobs:
 
       - name: Check required trust-packet files
         run: |
-          test -f create_linear_issue/trust_packet.json
-          test -f create_linear_issue/SKILL.md
-          test -f create_linear_issue/approved_sources.json
-          test -f create_linear_issue/sources.json
-          test -f create_linear_issue/edge_cases.md
-          test -f create_linear_issue/REVIEW.md
-          test -d create_linear_issue/tests
-          test -d create_linear_issue/runtimes
-          test -d create_linear_issue/scripts
-          test -f create_linear_issue/scripts/manifest.json
-          test -f create_linear_issue/scripts/manifest.sha256 || echo "no codegen sidecar (placeholder packet)"
+          test -f discount_approval/trust_packet.json
+          test -f discount_approval/SKILL.md
+          test -f discount_approval/approved_sources.json
+          test -f discount_approval/sources.json
+          test -f discount_approval/edge_cases.md
+          test -f discount_approval/REVIEW.md
+          test -d discount_approval/tests
+          test -d discount_approval/runtimes
+          test -d discount_approval/scripts
+          test -f discount_approval/scripts/manifest.json
+          test -f discount_approval/scripts/manifest.sha256 || echo "no codegen sidecar (placeholder packet)"
 
       - name: Validate trust-packet contract
         run: |
@@ -50,7 +50,7 @@ jobs:
           from pathlib import Path
           from pathlib import PurePosixPath
 
-          SKILL_SLUG = "create_linear_issue"
+          SKILL_SLUG = "discount_approval"
           ALLOWED_REVIEW_STATUSES = {
               "draft",
               "blocked",
@@ -324,7 +324,7 @@ jobs:
 
       - name: Check runtime skill has no review citations
         run: |
-          ! grep -Ei "http://|https://|source_id|sources.json|approved_sources.json|retrieval_snippet|notion://|support://" create_linear_issue/SKILL.md
+          ! grep -Ei "http://|https://|source_id|sources.json|approved_sources.json|retrieval_snippet|notion://|support://" discount_approval/SKILL.md
 
       - name: Install generated test dependencies
         run: |
@@ -332,7 +332,7 @@ jobs:
 
       - name: Run deterministic generated tests
         run: |
-          python -m pytest create_linear_issue/tests
+          python -m pytest discount_approval/tests
 
       - name: Verify capability integrity and source hygiene (no execution)
         run: |
@@ -342,7 +342,7 @@ jobs:
           import pathlib
           import sys
 
-          slug = "create_linear_issue"
+          slug = "discount_approval"
           scripts = pathlib.Path(slug) / "scripts"
           # HR-8: ASCII-only + byte-size cap over every published script.
           MAX_SCRIPT_BYTES = 3000
@@ -374,4 +374,4 @@ jobs:
 
       - name: Compile generated scripts (no execution)
         run: |
-          python -m py_compile create_linear_issue/scripts/*.py
+          python -m py_compile discount_approval/scripts/*.py
