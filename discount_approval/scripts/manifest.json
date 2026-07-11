@@ -1,0 +1,6 @@
+{
+  "description": "Inert placeholder capability manifest; runtime is not yet implemented.",
+  "entrypoint": "scripts/skill.py",
+  "manifest_version": "capability_manifest.v1",
+  "runtime": "rule_based_deterministic_check_no_deployment_or_paging_required"
+}
