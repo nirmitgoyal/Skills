@@ -30,14 +30,17 @@ jobs:
 
       - name: Check required trust-packet files
         run: |
-          test -f refund_eligibility/trust_packet.json
-          test -f refund_eligibility/SKILL.md
-          test -f refund_eligibility/approved_sources.json
-          test -f refund_eligibility/sources.json
-          test -f refund_eligibility/edge_cases.md
-          test -f refund_eligibility/REVIEW.md
-          test -d refund_eligibility/tests
-          test -d refund_eligibility/runtimes
+          test -f discount_approval/trust_packet.json
+          test -f discount_approval/SKILL.md
+          test -f discount_approval/approved_sources.json
+          test -f discount_approval/sources.json
+          test -f discount_approval/edge_cases.md
+          test -f discount_approval/REVIEW.md
+          test -d discount_approval/tests
+          test -d discount_approval/runtimes
+          test -d discount_approval/scripts
+          test -f discount_approval/scripts/manifest.json
+          test -f discount_approval/scripts/manifest.sha256 || echo "no codegen sidecar (placeholder packet)"
 
       - name: Validate trust-packet contract
         run: |
@@ -47,7 +50,7 @@ jobs:
           from pathlib import Path
           from pathlib import PurePosixPath
 
-          SKILL_SLUG = "refund_eligibility"
+          SKILL_SLUG = "discount_approval"
           ALLOWED_REVIEW_STATUSES = {
               "draft",
               "blocked",
@@ -321,7 +324,7 @@ jobs:
 
       - name: Check runtime skill has no review citations
         run: |
-          ! grep -Ei "http://|https://|source_id|sources.json|approved_sources.json|retrieval_snippet|notion://|support://" refund_eligibility/SKILL.md
+          ! grep -Ei "http://|https://|source_id|sources.json|approved_sources.json|retrieval_snippet|notion://|support://" discount_approval/SKILL.md
 
       - name: Install generated test dependencies
         run: |
@@ -329,4 +332,46 @@ jobs:
 
       - name: Run deterministic generated tests
         run: |
-          python -m pytest refund_eligibility/tests
+          python -m pytest discount_approval/tests
+
+      - name: Verify capability integrity and source hygiene (no execution)
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import sys
+
+          slug = "discount_approval"
+          scripts = pathlib.Path(slug) / "scripts"
+          # HR-8: ASCII-only + byte-size cap over every published script.
+          MAX_SCRIPT_BYTES = 3000
+          for py in sorted(scripts.glob("*.py")):
+              data = py.read_bytes()
+              if len(data) > MAX_SCRIPT_BYTES:
+                  print(f"script too large: {py}", file=sys.stderr)
+                  sys.exit(1)
+              try:
+                  data.decode("ascii")
+              except UnicodeDecodeError:
+                  print(f"non-ascii script: {py}", file=sys.stderr)
+                  sys.exit(1)
+          # Integrity: codegen packets ship scripts/manifest.sha256 binding the
+          # script + manifest bytes. The server-side scan is authoritative; CI
+          # only corroborates that published bytes match the recorded digests.
+          sidecar = scripts / "manifest.sha256"
+          if sidecar.is_file():
+              recorded = json.loads(sidecar.read_text(encoding="utf-8"))
+              for rel, want in recorded.items():
+                  got = hashlib.sha256(
+                      (pathlib.Path(slug) / rel).read_bytes()
+                  ).hexdigest()
+                  if got != want:
+                      print(f"integrity mismatch: {rel}", file=sys.stderr)
+                      sys.exit(1)
+          print("capability integrity + hygiene OK")
+          PY
+
+      - name: Compile generated scripts (no execution)
+        run: |
+          python -m py_compile discount_approval/scripts/*.py
