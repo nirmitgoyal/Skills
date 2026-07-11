@@ -1,0 +1,300 @@
+{
+  "approved_sources": [
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:12:57.902185Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0akplfbepl_1774894444782179",
+      "source_type": "slack",
+      "title": "Src Slack C0Akplfbepl 1774894444782179",
+      "url_or_document_id": "C0AKPLFBEPL__1774894444.782179"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:12:57.902185Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0akplfbepl_1774894458850489",
+      "source_type": "slack",
+      "title": "Src Slack C0Akplfbepl 1774894458850489",
+      "url_or_document_id": "C0AKPLFBEPL__1774894458.850489"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:12:57.902185Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0akplfbepl_1774894474554329",
+      "source_type": "slack",
+      "title": "Src Slack C0Akplfbepl 1774894474554329",
+      "url_or_document_id": "C0AKPLFBEPL__1774894474.554329"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:12:57.902185Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0akplfbepl_1774894650300109",
+      "source_type": "slack",
+      "title": "Src Slack C0Akplfbepl 1774894650300109",
+      "url_or_document_id": "C0AKPLFBEPL__1774894650.300109"
+    },
+    {
+      "allowed_data_points": [
+        "approved_excerpt"
+      ],
+      "allowed_scope": "approved_excerpt",
+      "approved_at": "2026-07-01T16:12:57.902185Z",
+      "approved_by": "nirmit@skilllayer.tech",
+      "connector_or_import_source": "slack",
+      "source_id": "src_slack_c0akplfbepl_1775264807261759",
+      "source_type": "slack",
+      "title": "Src Slack C0Akplfbepl 1775264807261759",
+      "url_or_document_id": "C0AKPLFBEPL__1775264807.261759"
+    }
+  ],
+  "blockers": [],
+  "claims": [
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "id": "claim_1_test_001",
+      "text": "Eligible when User posts 'Need sentry integration @Linear create task' in the bugs channel. The bot should create a Linear issue titled 'Add support for sentry integration' (or similar derivation) and reply with a URL such as https://linear.app/.../SEM-92, with no assignee set. Evidence: src_slack_c0akplfbepl_1774894444782179."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "id": "claim_2_test_002",
+      "text": "Eligible when User posts '@Linear create bug issues from these and assign to @Nirmit Goyal' with 'linear integration is failing' as the bug description. The bot should create a Linear issue (e.g., SEM-120) assigned to Nirmit Goyal and reply with the issue URL. Evidence: src_slack_c0akplfbepl_1775264807261759."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "id": "claim_3_test_003",
+      "text": "Ineligible when A user in a different Slack workspace attempts to invoke the @Linear bot that is registered to the Semantic Search workspace. The bot must refuse with 'Sorry, you can\u2019t message this instance of @Linear as it belongs to the Semantic Search workspace.' and must NOT create any Linear issue. Evidence: src_slack_c0akplfbepl_1775264807261759."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "id": "claim_4_test_004",
+      "text": "Ineligible when User posts '@Linear create task' with no preceding or following bug description text. Because the required 'bug_description' field is absent, the bot must not create an issue and should prompt the user to provide a description. No evidence of successful creation without description text in the source data."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "id": "claim_5_test_005",
+      "text": "Escalate when User posts 'Search is broken @Linear create task assign to @UnknownUser'. The bot can parse the create command and bug description, but cannot resolve '@UnknownUser' to a Linear team member. The bot should escalate back to the requester asking for a valid Linear assignee before or after creating the issue unassigned."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "id": "claim_6_test_006",
+      "text": "Escalate when The same bug description (e.g., 'Slack not integrated') is submitted twice in quick succession via '@Linear create task'. The first invocation creates SEM-93. The second invocation should be flagged as a potential duplicate and escalated for human triage rather than creating a second identical issue. Evidence pattern: src_slack_c0akplfbepl_1774894458850489 shows double invocation in the thread."
+    },
+    {
+      "blocker_ids": [],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "id": "claim_7_test_007",
+      "text": "Eligible when User posts 'taking too much time to search across all connectors @Linear create task'. The bot should create a Linear issue with a title derived from the description (e.g., 'Search across all connectors is too slow', matching SEM-94) and reply with the issue URL. Evidence: src_slack_c0akplfbepl_1774894474554329."
+    }
+  ],
+  "evidence": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "content_hash": "sha256:405ee16f0c65d843fb5b1fc2b663ad0b6b2144e4bf9367dff7e7b94fbfa1f21b",
+      "id": "evidence_1_test_001",
+      "retrieval_snippet": "Need sentry integration @Linear create task @Linear create task Created issue <https://linear.app/semanticsearch/issue/SEM-92/add-support-for-sentry-integration|SEM-92>",
+      "source_id": "src_slack_c0akplfbepl_1774894444782179",
+      "synced_at": "2026-07-01T16:12:57.902185Z"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "content_hash": "sha256:22f9ea5b4e7fe9b5e3fbd4a253ded31cac8b5abd36a445f87a7b07e1cb011285",
+      "id": "evidence_2_test_002",
+      "retrieval_snippet": "Slack not integrated @Linear create task @Linear create task Created issue <https://linear.app/semanticsearch/issue/SEM-93/slack-not-integrated|SEM-93>",
+      "source_id": "src_slack_c0akplfbepl_1774894458850489",
+      "synced_at": "2026-07-01T16:12:57.902185Z"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "content_hash": "sha256:53d7595ff100b21d582cfc3a905c042b3c1f81e5c1eb2b65df99e5c867836ede",
+      "id": "evidence_3_test_003",
+      "retrieval_snippet": "taking too much time to search across all connectors @Linear create task @Linear create task Created issue <https://linear.app/semanticsearch/issue/SEM-94/search-across-all-connectors-is-too-slow|SEM-94>",
+      "source_id": "src_slack_c0akplfbepl_1774894474554329",
+      "synced_at": "2026-07-01T16:12:57.902185Z"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "content_hash": "sha256:e14ba198ac9e2e06eb9aaca7e30835fd0283083a6bb87753b027f5f8ef1f9b46",
+      "id": "evidence_4_test_004",
+      "retrieval_snippet": "Hide figma and salesforce @Linear create task Created issue <https://linear.app/semanticsearch/issue/SEM-91/hide-figma-and-salesforce-integrations-from-view|SEM-91>",
+      "source_id": "src_slack_c0akplfbepl_1774894650300109",
+      "synced_at": "2026-07-01T16:12:57.902185Z"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "content_hash": "sha256:35870f20c61212cd68462a6adacf90549a1aaf240fd5f841269e9ec4a08c5eb4",
+      "id": "evidence_5_test_005",
+      "retrieval_snippet": "@Linear create bug issues from these and assign to @Nirmit Goyal Sorry, you can't message this instance of `@Linear` as it belongs to the Semantic Search workspace. @Harshit Arora linear integration is failing @Linear create bug issues from these and assign to @Nirmit Goyal Created issue <https://linear.app/semanticsearch/issue/SEM-120/linear-slack-integration-fails|SEM-120>",
+      "source_id": "src_slack_c0akplfbepl_1775264807261759",
+      "synced_at": "2026-07-01T16:12:57.902185Z"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "content_hash": "sha256:405ee16f0c65d843fb5b1fc2b663ad0b6b2144e4bf9367dff7e7b94fbfa1f21b",
+      "id": "evidence_6_test_006",
+      "retrieval_snippet": "Need sentry integration @Linear create task @Linear create task Created issue <https://linear.app/semanticsearch/issue/SEM-92/add-support-for-sentry-integration|SEM-92>",
+      "source_id": "src_slack_c0akplfbepl_1774894444782179",
+      "synced_at": "2026-07-01T16:12:57.902185Z"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "content_hash": "sha256:22f9ea5b4e7fe9b5e3fbd4a253ded31cac8b5abd36a445f87a7b07e1cb011285",
+      "id": "evidence_7_test_007",
+      "retrieval_snippet": "Slack not integrated @Linear create task @Linear create task Created issue <https://linear.app/semanticsearch/issue/SEM-93/slack-not-integrated|SEM-93>",
+      "source_id": "src_slack_c0akplfbepl_1774894458850489",
+      "synced_at": "2026-07-01T16:12:57.902185Z"
+    }
+  ],
+  "generated_at": "2026-07-01T16:22:12.609316Z",
+  "review_status": "draft",
+  "runtime_profiles": [
+    {
+      "install_instructions": "1. Install the Linear Slack app in the target Slack workspace and authorize it with a Linear API key scoped to the relevant team. 2. Invite @Linear to the #bugs channel. 3. Configure the Slack bot to listen for messages matching the pattern '@Linear create (task|bug)' in #bugs. 4. Store the Linear team ID and default project ID as environment variables for the bot runtime. 5. Ensure the bot's OAuth token has permission to resolve Slack @mentions to Linear user accounts via the Linear user list API. 6. Deploy the bot runtime with the idempotency check (60-second deduplication window) enabled. 7. Set up an error alerting webhook to notify the workspace admin on Linear API failures.",
+      "owner": "[redacted-email]",
+      "profile_path": "runtimes/deterministic_calls_linear_api_from_slack_bot_integration.md",
+      "runtime": "deterministic_calls_linear_api_from_slack_bot_integration",
+      "test_instructions": "1. In the #bugs channel, post 'Test connectivity issue @Linear create task' and verify a new Linear issue is created with a derived title and a confirmation URL is returned in the thread. 2. Post '@Linear create task assign to @[valid Linear user]' and verify the created issue has the correct assignee in Linear. 3. Attempt to invoke the bot from a different Slack workspace and confirm the cross-workspace refusal message appears and no issue is created. 4. Post the same bug description twice within 30 seconds and confirm only one issue is created (idempotency test). 5. Post '@Linear create task' with no description text and confirm no issue is created and the bot prompts for a description. 6. Simulate a Linear API 500 error and confirm the bot surfaces an error message to the user rather than silently failing. 7. Check the Linear issue list to confirm all test issues carry the 'slack-bug-report' label and the correct source metadata."
+    }
+  ],
+  "schema_version": "trust_packet.v1",
+  "skill_slug": "create_linear_issue",
+  "source_bundle_hash": "sha256:c112b225f2ad213fbd68e2f1a62396c72fcae7ae31c09faad52f34cbd80b4141",
+  "tests": [
+    {
+      "claim_ids": [
+        "claim_1_test_001"
+      ],
+      "evidence_ids": [
+        "evidence_1_test_001"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_001",
+      "name": "Standard create task with description only",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_2_test_002"
+      ],
+      "evidence_ids": [
+        "evidence_2_test_002"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_002",
+      "name": "Create bug with explicit assignee mention",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_3_test_003"
+      ],
+      "evidence_ids": [
+        "evidence_3_test_003"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_003",
+      "name": "Cross-workspace bot invocation",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_4_test_004"
+      ],
+      "evidence_ids": [
+        "evidence_4_test_004"
+      ],
+      "expected_behavior": "ineligible",
+      "id": "test_004",
+      "name": "Missing bug description after create command",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_5_test_005"
+      ],
+      "evidence_ids": [
+        "evidence_5_test_005"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_005",
+      "name": "Assignee mention resolves to unknown Linear user",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_6_test_006"
+      ],
+      "evidence_ids": [
+        "evidence_6_test_006"
+      ],
+      "expected_behavior": "needs_escalation",
+      "id": "test_006",
+      "name": "Rapid duplicate submission of same bug description",
+      "status": "pass"
+    },
+    {
+      "claim_ids": [
+        "claim_7_test_007"
+      ],
+      "evidence_ids": [
+        "evidence_7_test_007"
+      ],
+      "expected_behavior": "eligible",
+      "id": "test_007",
+      "name": "Multi-word performance bug creates correctly titled issue",
+      "status": "pass"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "description": "Inert placeholder capability manifest; runtime is not yet implemented.",
+  "entrypoint": "scripts/skill.py",
+  "manifest_version": "capability_manifest.v1",
+  "runtime": "deterministic_calls_linear_api_from_slack_bot_integration"
+}
